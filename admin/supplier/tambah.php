@@ -1,5 +1,11 @@
 <?php 
 
+// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
+if (!isset($_GET['cek'])) {
+    header("Location: index.php");
+    exit();
+}
+
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
 

@@ -42,7 +42,7 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                 <?php endforeach; ?>
             </table>
             <!-- end table -->
-            <a href="<?= BASEURL ?>/admin/supplier/tambah.php">
+            <a href="<?= BASEURL ?>/admin/supplier/tambah.php?cek=true">
                 <button class="tambah">Tambahkan Supplier Baru</button>
             </a>
         </div>
