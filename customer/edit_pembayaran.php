@@ -7,7 +7,7 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] != 'customer') {
     exit();
 }
 
-require_once($_SERVER['DOCUMENT_ROOT']."/TA-tes/base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
+require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.php untuk mendapatkan function SQL
 require_once(BASEPATH . "/validations.php");
 

@@ -5,13 +5,16 @@ require_once('../base.php');    // untuk mengunakan variable constant BASEURL/BA
 require_once(BASEPATH . "/customer/templates/header.php");   // mengabungkan dengan halaman header
 
 // mengecek apakah ada get jika tidak menampilkan semua
-if(!isset($_GET['cate'])){
+if(isset($_GET['cate'])){
+    $products = getAllDataProductsWithDetailsByCategory($_GET['cate']);
+    $judul = 'Kategori : '. $_GET['cate'];
+    
+}elseif(isset($_GET['keyword'])){
+    $judul = 'Hasil Pencarian dari : ' .$_GET['keyword'];
+    $products = getAllDataProductsBySearch($_GET['keyword']);
+}else{
     $products = getAllDataProductsWithCategory();
     $judul = 'Semua Produk';
-}else{
-    // jika ada tampilkan sesuai kategori get
-    $products = getAllDataProductsWithDetailsByCategory($_GET['cate']);
-    $judul = 'Kategori : '. $products[0]['nama_kategori'];
 }
 ?>
 

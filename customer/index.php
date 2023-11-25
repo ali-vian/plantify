@@ -52,13 +52,11 @@ $populars = getPopularProducts();
     <div class="judul">
         <h2>Baru</h2>                               <!-- mengarah ke halaman produk -->
         <h4 ><a class="green"  href="<?= BASEURL. '/customer/produk.php'?>">Lihat semua</a></h4>
-        <h4 ><a class="green"  href="<?= BASEURL. '/customer/produk.php'?>">Lihat semua</a></h4>
     </div>
     <div class="container">
     <?php foreach($news as $new):?> <!-- perulangan untuk mengeluarkan nilai $news -->
        
         <div class="card">              <!-- menampialkan gambar produk dari variable $new -->
-            <img src="<?= BASEURL ;?>/assets/img/produk/<?= $new['gambar_produk'] ?>"
             <img src="<?= BASEURL ;?>/assets/img/produk/<?= $new['gambar_produk'] ?>"
               alt="gambar produk" class="img-produk"
             />
@@ -95,7 +93,6 @@ $populars = getPopularProducts();
 <div class="produk">
     <div class="judul">
         <h2>Popular</h2>                    <!-- mengarah ke halaman produk -->
-        <h4><a class="green"  href="<?= BASEURL. '/customer/produk.php'?>">Lihat semua</a></h4>
         <h4><a class="green"  href="<?= BASEURL. '/customer/produk.php'?>">Lihat semua</a></h4>
     </div>
     <div class="container">

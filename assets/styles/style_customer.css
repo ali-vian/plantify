@@ -274,6 +274,7 @@ footer {
   justify-content: flex-start;
   column-gap: 50px;
 }
+
 /* End Footer */
 /* ============================================ End Index ============================ */
 .img-keranjang {
@@ -287,12 +288,12 @@ table {
 }
 td,
 tr {
-  padding: 20px;
-  text-align: center;
+  padding: 20px 60px 20px 60px;
+  border-bottom: solid 1px #c4c3c3;
 }
 th {
-  text-align: center;
-  padding: 50px;
+  text-align: left;
+  padding: 10px 60px 10px 60px;
 }
 .kosong {
   display: flex;
@@ -312,8 +313,7 @@ th {
   padding: 50px 110px;
 }
 .total {
-  width: 60%;
-  padding: 15px 20px 10px 20px;
+  padding: 15px 50px 15px 50px;
   margin: 0px 60px 30px 60px;
   display: flex;
   justify-content: space-between;
@@ -331,12 +331,11 @@ th {
   align-items: center;
 }
 .jumlah-btn {
-  color: #10289e;
-  border: 1px solid #0e42a4;
+  color: #666666;
+  border: 1px solid #666666;
   border-radius: 100px;
   padding: 0 7px 0 7px;
   cursor: pointer;
-  margin: 10px;
 }
 .jml {
   margin: 15px;
@@ -346,60 +345,94 @@ th {
   margin: 50px 0px;
 }
 
-.button-container {
+.tipe-pembayaran {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 50px;
+  row-gap: 10px;
+}
+
+.form-konfirmasi {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
-.alamat {
-  padding: 15px;
-}
-
-.alamat .pengiriman {
-  padding-bottom: 20px;
-}
-
-.alamat .data-diri {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.alamat .data-diri a {
-  color: blue;
-}
-
-input,
-select {
+input[type="text"] {
   width: 100%;
-  padding: 10px;
+  padding: 7px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: #f2f2f2;
 }
 
-.kembali {
-  padding: 10px 20px;
-  font-size: medium;
-  border-radius: 10px;
+button[type="submit"] {
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-top: 10px;
   background-color: var(--hijau);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
   cursor: pointer;
-  width: 600px;
-  margin-top: 20px;
+}
+button[type="submit"]:hover {
+  background-color: #005c50;
+}
+.kembali {
+  background-color: #5a6268;
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.kembali:hover {
+  background-color: #515a61;
 }
 
-.kembali:hover {
-  background-color: #003831;
-  color: white;
+small.error {
+  color: red;
 }
-.hijau {
+
+td.riwayat,
+th.riwayat {
+  padding: 20px 10px;
+  font-size: medium;
+}
+
+.btn-action {
+  font-size: small;
   background-color: var(--hijau);
+  color: #fff;
+  border: none;
+  padding: 5px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: fit-content;
+}
+.btn-action:nth-child(2) {
+  background-color: #007bff;
+}
+.btn-action:nth-child(3) {
+  background-color: #ff0015;
+}
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.back-btn {
+  width: auto;
+  margin: 0px 60px 30px 60px;
 }
 
 .profile {
@@ -408,4 +441,24 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.search {
+  display: flex;
+  width: 51%;
+  align-items: center;
+  gap: 20px;
+}
+input.search {
+  border-radius: 20px;
+}
+input.search:focus {
+  border: yellow 2px solid;
+  outline: none;
+}
+.btn-search {
+  background-color: transparent;
+  color: transparent;
+  cursor: pointer;
+  border: none;
 }

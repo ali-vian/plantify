@@ -48,6 +48,19 @@ function getPopularProducts()
 	}
 }
 
+function getAllDataProductsBySearch($keyword)
+{
+	try {
+		$statement = DB->prepare("SELECT * FROM produk p JOIN kategori k ON p.id_kategori = k.id_kategori
+		WHERE LOWER(nama_produk) LIKE LOWER(:keyword) OR LOWER(nama_kategori) LIKE LOWER(:keyword)");
+		$statement->bindValue(':keyword',"%$keyword%");
+		$statement->execute();
+		return $statement->fetchAll(PDO::FETCH_ASSOC);
+	} catch (PDOException $err) {
+		echo $err->getMessage();
+	}	
+}
+
 // fungsi query untuk mendapatkan semua data produk
 function getAllDataProductsWithCategory()
 {

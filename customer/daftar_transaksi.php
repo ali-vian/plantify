@@ -2,8 +2,7 @@
 
 $title = "Daftar Pesanan";
 
-require_once("../base.php");    // untuk mengunakan variable constant BASEURL/BASEPATH
-require_once(BASEPATH . "/database.php");   // menghubungkan dengan file database.php untuk mendapatkan function SQL
+require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH."/customer/templates/header.php");
 
 $pesanan =  getOrder($_SESSION['username']);
@@ -13,14 +12,8 @@ $pesanan =  getOrder($_SESSION['username']);
     <div class="judul">
         <h2>Riwayat Transaksi</h2>
     </div>
-    <div class="card kosong">
-        <?php if(empty($pesanan)) : ?> <!-- jika keranjang kosong maka tampilkan berikut -->
-            <div class="kosong">
-                <h4>Keranjang belanja anda masih kosong</h4>
-                <a class="btn-card" href="produk.php">Belanja Sekarang</a>
-            </div>
-        <?php else :?> 
-        <table class="riwayat">
+    <div class="card">
+        <table class="riwaya">
             <tr>
                 <th class="riwayat">Tanggal Order</th>
                 <th class="riwayat">Total Order</th>
@@ -47,11 +40,12 @@ $pesanan =  getOrder($_SESSION['username']);
                             </div>
                     </td>
                 </tr>
-            <?php endforeach;?>
+            <?php endforeach?>
         </table>
-        <?php endif?>
     </div>
 </div>
+
+
 <?php
 require_once('templates/footer.php'); // mengabungkan dengan halaman header
 ?>

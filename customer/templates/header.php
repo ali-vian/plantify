@@ -38,10 +38,13 @@ foreach($keranjang as $krnjg){
         <a class="<?= $title == 'Produk' ? 'active' : '' ?>" href="<?= BASEURL. "/customer/produk.php" ?>">Produk</a>
         <a class="<?= $title == 'Daftar Pesanan' ? 'active' : '' ?>" href="<?= BASEURL. "/customer/daftar_transaksi.php" ?>">Daftar Pesanan</a>
       </div>
-      <div class="icon-menu">
-        <a href="">
+      <form action="produk.php" class="search" method="get">
+        <input type="text" name="keyword" value="" class="search">
+        <button class="btn-search">
           <img src="<?= BASEURL ;?>/assets/img/icon-search.png" alt="icon" />
-        </a>
+        </button>
+      </form>
+      <div class="icon-menu">
         <a href="<?= BASEURL ;?>/customer/keranjang.php">
           <?php if($total > 0):?> <!--jika total yang telah dihitung lebih besar dari nol maka tampilkan-->
             <div class="con" >
