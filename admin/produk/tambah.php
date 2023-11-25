@@ -12,6 +12,13 @@ if (isset($_POST['submit'])) {
     $gambar = uploadGambar($errors);        // berisi nama gambar jika tidak ada error
     validasiTambahProduk($errors, $_POST);
 
+    $stat = DB->prepare("SELECT nama_produk FROM produk WHERE nama_produk = :nama_produk");
+    $stat->execute(array(":nama_produk" => $nama_produk));
+
+    if ($stat->rowCount() > 0) {
+        $errors['error'] = "Nama produk sudah ada";
+    }
+
     $cek = "";
     foreach ($errors as $error) {
         $cek .= $error;

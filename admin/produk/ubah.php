@@ -11,18 +11,14 @@ $success = false;
 // ketika submit ditekan
 if (isset($_POST['submit'])) {
 
-    $id = $_POST['id_produk'];
-    $nama_produk = htmlspecialchars($_POST['nama_produk']);
-    $harga = htmlspecialchars($_POST['harga']);
-    $stok = htmlspecialchars($_POST['stok']);
-    $kategori = $_POST['kategori'];
-    $sup = $_POST['supplier'];
+    validasiTambahProduk($errors, $_POST);
     $gambarlama = $_POST['gambar_lama'];
     
     if ($_FILES['gambar']['error'] === 4) {
         $gambar = $gambarlama;
     } else {
         $gambar = uploadGambar($errors);
+        unlink(BASEPATH."/assets/img/produk/".$gambarlama);
     }
 
     $cek = "";
@@ -38,13 +34,13 @@ if (isset($_POST['submit'])) {
         try{
             $stat = DB->prepare("UPDATE produk SET id_supplier = :id_supplier, nama_produk = :nama_produk, harga_produk = :harga_produk, stok_produk = :stok_produk, gambar_produk = :gambar_produk, id_kategori = :id_kategori WHERE id_produk = :id_produk");
             $stat->execute(array(
-                ":id_produk" => $id,
-                ":id_supplier" => $sup,
-                ":nama_produk" => $nama_produk,
-                ":harga_produk" => $harga,
-                ":stok_produk" => $stok,
+                ":id_produk" => $_POST['id_produk'],
+                ":id_supplier" => $_POST['supplier'],
+                ":nama_produk" => $_POST['nama_produk'],
+                ":harga_produk" => $_POST['harga'],
+                ":stok_produk" => $_POST['stok'],
                 ":gambar_produk" => $gambar,
-                ":id_kategori" => $kategori));
+                ":id_kategori" => $_POST['kategori']));
         } catch (PDOException $err) {
             echo $err->getMessage();
         }

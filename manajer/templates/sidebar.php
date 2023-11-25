@@ -1,5 +1,5 @@
 <?php 
-require_once($_SERVER['DOCUMENT_ROOT']."/TA-tes/base.php");
+require_once("../base.php");
 require_once(BASEPATH . "/database.php");
 ?>
 <!DOCTYPE html>

@@ -9,7 +9,7 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] != 'manajer') {
 $title = "Dashboard";
 require_once('../base.php');
 require_once(BASEPATH . "/manajer/templates/sidebar.php");
-$products = getAllDataProducts();
+$kategoriStok = getAllCategoryStock();
 ?>
 
     <!-- start container-kanan -->
@@ -28,9 +28,9 @@ $products = getAllDataProducts();
 <script>
     let label = [];
     let datas = [];
-    <?php foreach ($products as $pro): ?>
-        label.push("<?= $pro['nama_produk'] ?>");
-        datas.push(<?= $pro['stok_produk'] ?>);
+    <?php foreach ($kategoriStok as $kat): ?>
+        label.push("<?= $kat['nama_kategori'] ?>");
+        datas.push(<?= $kat['stok'] ?>);
     <?php endforeach; ?>
     const backgroundColors = Array.from({ length: datas.length }, () => {
         const letters = '0123456789ABCDEF';
