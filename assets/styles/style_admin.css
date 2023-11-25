@@ -1,0 +1,255 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../font/Montserrat-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../font/Poppins-Regular.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --hijau: #004f44;
+  --poppins: "Poppins", sans-serif;
+  --monsterrat: "Montserrat";
+  font-family: var(--poppins);
+}
+
+body {
+  background-color: #ccc;
+}
+
+/* sidebar start */
+.sidebar {
+  background-color: var(--hijau);
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  padding: 30px 10px;
+}
+.logo {
+  width: 120px;
+}
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 90%;
+}
+menu {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 40px;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.active {
+  color: rgb(217, 255, 0);
+}
+/* sidebar end */
+
+.container-kanan {
+  margin-left: 250px;
+  overflow-y: auto;
+}
+
+/* header start */
+header {
+  height: 10vh;
+  padding: 15px 35px;
+  display: flex;
+  background-color: #fff;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin: 10px 15px ;
+}
+.profil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.icon-profil {
+  width: 50px;
+  border-radius: 50px;
+}
+/* header end */
+
+.wadah{
+  padding: 50px 128px;
+  color: green;
+  background-color: #fff;
+  margin: 10px 15px;
+  border-radius: 10px;
+}
+.judul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--monsterrat);
+  margin-bottom: 50px;
+  color: green;
+}
+.judul a {
+  color: green;
+}
+
+/* start produk */
+.container-produk {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  align-content: center;
+  margin-bottom: 50px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  font-size: large;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.img-produk {
+  object-fit: cover;
+  width: 278px;
+  height: 300px;
+}
+small {
+  font-size: 12px;
+  color: grey;
+}
+.caption {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+}
+button.ubah {
+  width: 100%;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.ubah:hover {
+  background-color: #0056b3; 
+}
+button.hapus {
+  width: 100%;
+  background-color: #dc3545; 
+  color: #fff; 
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.hapus:hover {
+  background-color: #a52a2a; 
+}
+button.tambah {
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button.tambah:hover {
+  background-color: #218838;
+}
+button.kembali {
+  background-color: #6c757d; 
+  color: #fff; 
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+button.kembali:hover {
+  background-color: #5a6268; 
+} 
+p.error {
+  color: red;
+  font-size: 1.1rem;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 7px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f2f2f2;
+}
+button[type="submit"] {
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 7px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+/* tambah produk end */
+/* End Produk */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  background-color: #2ecc71;
+  padding: 20px;
+  color: black;
+}
+td {
+  text-align: center;
+  padding: 20px;
+}
+tr:nth-child(odd) {
+  background-color: #ccc;
+}
+
+.logout:hover , menu a:hover {
+  color: rgb(217, 255, 0);
+}

@@ -1,0 +1,142 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("../font/Montserrat-Regular.ttf");
+}
+@font-face {
+font-family: "Poppins";
+src: url("../font/Poppins-Regular.ttf");
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+--hijau: #004f44;
+--poppins: "Poppins", sans-serif;
+--monsterrat: "Montserrat";
+font-family: var(--poppins);
+}
+
+body {
+    background-color: #ccc;
+}
+
+.sidebar {
+    background-color: white;
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    padding: 30px 10px;
+}
+
+.logo {
+    width: 120px;
+}
+.profil {
+    width: 100%;
+    background-color:var(--hijau);
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+.profil span {
+    font-size: 0.8rem;
+}
+.profil img {
+    width: 50px;
+    border-radius: 50px;
+}
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    width: 100%;
+}
+menu {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 40px 5px;
+    width: 100%;
+}
+menu a {
+    padding: 15px;
+    border-radius: 10px;
+}
+a {
+    color: #7a7a7a;
+    text-decoration: none;
+}
+.active {
+    background-color: #004f44;
+    color: white;
+}
+
+.container-kanan {
+    margin-left: 300px;
+    overflow-y: auto;
+}
+.form-container {
+    padding: 10px;
+    background-color: white;
+    margin: 10px 15px;
+    border-radius: 10px;
+}
+input {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+input[type="submit"] {
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    color: #3498db;
+    background-color: #fff;
+}
+input[type="submit"]:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+.grafik-container {
+    background-color: white;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.wadah{
+    padding: 50px 128px;
+    background-color: #fff;
+    margin: 10px 15px;
+    border-radius: 10px;
+}
+h2 {
+    margin: 20px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table.rekap th, table.jumlah th {
+    background-color: #2ecc71;
+    padding: 20px;
+    color: black;
+}
+td {
+    text-align: center;
+    padding: 20px;
+}
+table.rekap tr:nth-child(odd) {
+    background-color: #ccc;
+}
