@@ -99,7 +99,7 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
                 </div>
                 <small class="error"><?= $errors["bank"] ?? '' ?></small>
                 <h4>No Rekening</h4>
-                <input type="text" name="no_rekening" value="<?= $_POST['no_rekening'] ?? '' ?>">
+                <input type="text" name="no_rekening" value="<?= htmlspecialchars($_POST['no_rekening'] ?? '') ?>">
                 <small class="error"><?= $errors["rek"] ?? '' ?></small>
                 <button class="btn-card" type="submit" name="submit">Pesan</button>
                 <a href="keranjang.php">

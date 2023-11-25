@@ -57,17 +57,17 @@ if (isset($_POST['register'])) {
         <form action="edit_profile.php" method="post">
             <div class="input-container">
                 <label for="nama">Nama</label>
-                <input type="text" id="nama" name="nama" value="<?= $_POST["nama"] ?? $customer['nama'] ?>">
+                <input type="text" id="nama" name="nama" value="<?= htmlspecialchars($_POST["nama"] ?? $customer['nama']) ?>">
                 <span class="error-msg"><?= $errors["nama"] ?? '' ?></span>
             </div>
             <div class="input-container">
                 <label for="tel">Nomor Telepon</label>
-                <input type="text" id="tel" name="tel" value="<?= $_POST["tel"] ?? $customer['no_telepon'] ?>">
+                <input type="text" id="tel" name="tel" value="<?= htmlspecialchars($_POST["tel"] ?? $customer['no_telepon']) ?>">
                 <span class="error-msg"><?= $errors["tel"] ?? '' ?></span>
             </div>
             <div class="input-container">
                 <label for="address">Alamat</label>
-                <textarea name="address" id="address" rows="1"><?= $_POST["address"] ?? $customer['alamat'] ?></textarea>
+                <textarea name="address" id="address" rows="1"><?= htmlspecialchars($_POST["address"] ?? $customer['alamat']) ?></textarea>
                 <span class="error-msg"><?= $errors["address"] ?? '' ?></span>
             </div>
             <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="btn">Batal</a>

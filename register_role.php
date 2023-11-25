@@ -57,7 +57,7 @@ if (isset($_POST['next'])) {
             </div>
             <div class="input-container">
                 <label for="ref">Kode Refferal</label>
-                <input type="password" name="ref" id="ref" value="<?php echo $_POST["ref"] ?? '' ?>">
+                <input type="password" name="ref" id="ref" value="<?php echo htmlspecialchars($_POST["ref"] ?? '') ?>">
                 <span class="error-msg"><?php echo $errors["ref"] ?? '' ?></span>
                 <span class="roles-note">*isi jika memilih admin atau manajer</span>
             </div>
