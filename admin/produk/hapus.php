@@ -1,5 +1,11 @@
 <?php 
 
+// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
+if (!isset($_GET['id'])) {
+    header("Location: index.php");
+    exit();
+}
+
 session_start();
 
 /* pengecekan jika tidak ada variable $_SESSION['login'] atau $_SESSION['role'] 

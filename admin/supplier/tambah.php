@@ -1,5 +1,11 @@
 <?php 
 
+// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
+if (!isset($_GET['cek'])) {
+    header("Location: index.php");
+    exit();
+}
+
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
 
@@ -9,23 +15,7 @@ $success = false;
 // ketika submit ditekan
 if (isset($_POST['submit'])) {
 
-    $nama_supplier = htmlspecialchars($_POST['nama_supplier']);
-    $tel = htmlspecialchars($_POST['tel']);
-    $alamat = htmlspecialchars($_POST['alamat']);
-
-    if (checkRequired($nama_supplier) || checkRequired($tel) || checkRequired($alamat)) {
-        $errors['error'] = "data supplier tidak boleh ada yang kosong";
-    } else {
-        if (!checkAlphabet($nama_supplier)) {
-            $errors['error'] = "nama supplier harus berupa alfabet";
-        } else if (!checkNumeric($tel)) {
-            $errors['error'] = "telepon supplier harus berupa numerik";
-        } else if (strlen($tel) < 12) {
-            $errors['error'] = "telepon tidak boleh  kurang dari 12 digit";
-        } else {
-            $errors['error'] = "";
-        }
-    }
+    validateTambahSupplier($errors, $_POST);
 
     if ($errors['error'] == "") {
         $success = true;
@@ -35,9 +25,9 @@ if (isset($_POST['submit'])) {
         try{
             $stat = DB->prepare("INSERT INTO supplier VALUES ('', :nama, :alamat, :telepon)");
             $stat = $stat->execute(array(
-                ":nama" => $nama_supplier,
-                ":alamat" => $alamat,
-                ":telepon" => $tel));
+                ":nama" => $_POST['nama_supplier'],
+                ":alamat" => $_POST['alamat'],
+                ":telepon" => $_POST['tel']));
         } catch (PDOException $err) {
             echo $err->getMessage(); 
         }

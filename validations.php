@@ -222,15 +222,10 @@ function validasiTambahProduk (&$errors, $inputan) {
     $kategori = $inputan['kategori'];
     $sup = $inputan['supplier'];
 
-    $stat = DB->prepare("SELECT nama_produk FROM produk WHERE nama_produk = :nama_produk");
-    $stat->execute(array(":nama_produk" => $nama_produk));
-
     if (checkRequired($nama_produk) || checkRequired($harga) || checkRequired($stok) || $kategori == 0 || $sup == 0) {
         $errors['error'] = "data produk tidak boleh ada yang kosong";
     } else if (!checkAlphabet($nama_produk)) {
         $errors['error'] = "nama produk tidak boleh mengandung angka atau simbol";
-    } else if ($stat->rowCount() > 0) {
-        $errors['error'] = "nama produk sudah ada";
     } else if (!checkNumeric($harga)) {
         $errors['error'] = "harga produk harus berupa angka";
     } else if (!checkNumeric($stok)) {
@@ -270,6 +265,26 @@ function uploadGambar(&$errors) {
     
     return $namaFileBaru;
 
+}
+
+function validateTambahSupplier(&$errors, $inputan) {
+    $nama_supplier = htmlspecialchars($inputan['nama_supplier']);
+    $tel = htmlspecialchars($inputan['tel']);
+    $alamat = htmlspecialchars($inputan['alamat']);
+
+    if (checkRequired($nama_supplier) || checkRequired($tel) || checkRequired($alamat)) {
+        $errors['error'] = "data supplier tidak boleh ada yang kosong";
+    } else {
+        if (!checkAlphabet($nama_supplier)) {
+            $errors['error'] = "nama supplier harus berupa alfabet";
+        } else if (!checkNumeric($tel)) {
+            $errors['error'] = "telepon supplier harus berupa numerik";
+        } else if (strlen($tel) < 12) {
+            $errors['error'] = "telepon tidak boleh  kurang dari 12 digit";
+        } else {
+            $errors['error'] = "";
+        }
+    }
 }
 
 

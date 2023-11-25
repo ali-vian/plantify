@@ -1,5 +1,11 @@
 <?php 
 
+// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
+if (!isset($_GET['cek'])) {
+    header("Location: index.php");
+    exit();
+}
+
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
 
@@ -11,6 +17,13 @@ if (isset($_POST['submit'])) {
 
     $gambar = uploadGambar($errors);        // berisi nama gambar jika tidak ada error
     validasiTambahProduk($errors, $_POST);
+
+    $stat = DB->prepare("SELECT nama_produk FROM produk WHERE nama_produk = :nama_produk");
+    $stat->execute(array(":nama_produk" => $nama_produk));
+
+    if ($stat->rowCount() > 0) {
+        $errors['error'] = "Nama produk sudah ada";
+    }
 
     $cek = "";
     foreach ($errors as $error) {

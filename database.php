@@ -467,4 +467,14 @@ function getAllOrderByStatusAndTime($time1,$time2,$status)
 	}
 }
 
+function getAllCategoryStock() {
+	try {
+		$statement = DB->prepare("SELECT nama_kategori, SUM(stok_produk) AS stok FROM produk p JOIN kategori k ON p.id_kategori = k.id_kategori WHERE p.id_kategori = k.id_kategori GROUP BY nama_kategori;");
+		$statement->execute();
+		return $statement->fetchAll(PDO::FETCH_ASSOC);
+	} catch (PDOException $err) {
+		echo $err->getMessage();
+	}
+}
+
 // ---------------------------end Manajer ----------------------------------------
