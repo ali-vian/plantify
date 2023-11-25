@@ -118,7 +118,7 @@ if (isset($_POST['register'])) {
                     <!-- inputan-start -->
                     <div class="input-container">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" value="<?php echo $_POST["username"] ?? '' ?>">
+                        <input type="text" id="username" name="username" value="="<?php echo $_POST["password2"] ?? '' ?>">
                         <span class="error-msg"><?php echo $errors["username"] ?? '' ?></span>
                     </div>
                     <div class="input-container">

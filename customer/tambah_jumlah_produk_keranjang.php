@@ -9,5 +9,20 @@ if (!isset($_SESSION['login']) || $_SESSION['role'] != 'customer') {
 
 require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.php untuk mendapatkan function SQL
+
+require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
+require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.php untuk mendapatkan function SQL
+$keranjang = getKeranjang($_SESSION['username']);
+$product = getDataProductById($_GET['pro']);
+$cek = false;
+foreach($keranjang as $cart ){
+    if($_GET['pro'] == $cart['id_produk'] && $product['stok_produk'] > $cart['jml']){
+        $cek = true;
+    }
+}
+if($cek){
 // function menambahkan tambah jumlah produk
 increaseProductInCart($_GET['pro'],$_GET['krjng']);
+}else{
+	header("Location: index.php");
+}

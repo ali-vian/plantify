@@ -74,7 +74,7 @@ $populars = getPopularProducts();
                         }
                     }
                 ?>
-                <?php if ($new['stok_produk'] == 0 ):?>
+                <?php if ($new['stok_produk'] <= 0 ):?>
                     <div class="btn-card habis">Stok Habis</div>  <!-- kondisi jika stok produk 0 maka tidak bisa dibeli dan menampilkan stok habis -->
                 <?php elseif($cek): ?>
                     <div class="btn-card habis">Stok Tidak Mencukupi</div>  
@@ -115,7 +115,7 @@ $populars = getPopularProducts();
                         }
                     }
                 ?>
-                <?php if ($popular['stok_produk'] == 0 ):?>
+                <?php if ($popular['stok_produk'] <= 0 ):?>
                     <div class="btn-card habis">Stok Habis</div>  <!-- kondisi jika stok produk 0 maka tidak bisa dibeli dan menampilkan stok habis -->
                 <?php elseif($cek): ?>
                     <div class="btn-card habis">Stok Tidak Mencukupi</div>  
@@ -154,13 +154,13 @@ $populars = getPopularProducts();
     </div>
     <div class="container">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9644736773307!2d112.72410727433831!3d-7.130106192873798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd803dcd1e1bd7f%3A0x5261304f608c91db!2sLey%20Denara!5e0!3m2!1sid!2sid!4v1699597392448!5m2!1sid!2sid"
-          width="1159"
-          height="287"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9644736773307!2d112.72410727433831!3d-7.130106192873798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd803dcd1e1bd7f%3A0x5261304f608c91db!2sLey%20Denara!5e0!3m2!1sid!2sid!4v1699597392448!5m2!1sid!2sid"
+            width="1159"
+            height="287"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
     </div>
 </div>

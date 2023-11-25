@@ -7,7 +7,7 @@ require_once(BASEPATH . "/customer/templates/header.php");   // mengabungkan den
 // mengecek apakah ada get jika tidak menampilkan semua
 if(isset($_GET['cate'])){
     $products = getAllDataProductsWithDetailsByCategory($_GET['cate']);
-    $judul = 'Kategori : '. $_GET['cate'];
+    $judul = 'Kategori : '. $products[0]['nama_kategori'];
     
 }elseif(isset($_GET['keyword'])){
     $judul = 'Hasil Pencarian dari : ' .$_GET['keyword'];
@@ -22,6 +22,11 @@ if(isset($_GET['cate'])){
     <div class="judul">
         <h2><?= $judul ?></h2> <!-- menampilkan judul -->
     </div>
+    <?php if(empty($products)) : ?> <!-- jika keranjang kosong maka tampilkan berikut -->
+            <div class="kosong">
+                <h4>Tidak Ditemukan</h4>
+            </div>
+    <?php else :?> 
     <div class="container prod">
         <?php foreach($products as $product ):?>    <!-- perulangan untuk mengeluarkan nilai $products -->
             <div class="card">              <!-- menampialkan gambar produk dari variable $product -->
@@ -40,7 +45,7 @@ if(isset($_GET['cate'])){
                         }
                     }
                     ?>
-                    <?php if ($product['stok_produk'] == 0 ):?>
+                    <?php if ($product['stok_produk'] <= 0 ):?>
                         <div class="btn-card habis">Stok Habis</div>  <!-- kondisi jika stok produk 0 maka tidak bisa dibeli dan menampilkan stok habis -->
                     <?php elseif($cek): ?>
                         <div class="btn-card habis">Stok Tidak Mencukupi</div>  
@@ -53,6 +58,7 @@ if(isset($_GET['cate'])){
             </div>
         <?php endforeach;?>
     </div>
+    <?php endif;?>
 </div>
 
 <?php

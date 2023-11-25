@@ -61,6 +61,18 @@ function getAllDataProductsBySearch($keyword)
 	}	
 }
 
+function getDataProductById($id)
+{
+	try {
+		$statement = DB->prepare("SELECT * FROM produk WHERE id_produk = :id");
+		$statement->bindValue(":id",$id);
+		$statement->execute();
+		return $statement->fetch(PDO::FETCH_ASSOC);
+	} catch (PDOException $err) {
+		echo $err->getMessage();
+	}
+}
+
 // fungsi query untuk mendapatkan semua data produk
 function getAllDataProductsWithCategory()
 {
