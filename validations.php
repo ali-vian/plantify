@@ -64,7 +64,7 @@ function validateUsername(&$errors, $username) {
         $errors["username"] = "username tidak boleh kosong";
     } else {
         if (!checkAlphaNumeric($username)) {
-            $errors["username"] = "username harus gabungan huruf dan angka";
+            $errors["username"] = "harus gabungan huruf dan angka";
         } else if ($statement->rowCount() > 0) {
             $errors["username"] = "username sudah digunakan";
         } else {
@@ -88,7 +88,7 @@ function validateUsernameLogin(&$errors, $username) {
         return false;
     } else {
         if (!checkAlphaNumeric($username)) {
-            $errors["username"] = "username harus gabungan huruf dan angka";
+            $errors["username"] = "harus gabungan huruf dan angka";
             return false;
         } else if ($statement->rowCount() == 0) {
             $errors["username"] = "username tidak ditemukan";
@@ -237,8 +237,7 @@ function uploadGambar(&$errors) {
     
     $namaFile = $_FILES["gambar"]["name"];
     $error = $_FILES["gambar"]["error"];
-    $tmpName = $_FILES["gambar"]["tmp_name"];
-    
+
     // cek apakah tidak ada gambar yang diupload
     if ($error === 4) {
         $errors['error'] = "pilih gambar terlebih dahulu";
@@ -260,8 +259,6 @@ function uploadGambar(&$errors) {
     $namaFileBaru = uniqid();
     $namaFileBaru .= '.';
     $namaFileBaru .= $ekstensiGambar;
-
-    move_uploaded_file($tmpName, BASEPATH . "/assets/img/produk/" . $namaFileBaru); 
     
     return $namaFileBaru;
 

@@ -1,11 +1,5 @@
 <?php 
 
-// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
-if (!isset($_GET['cek'])) {
-    header("Location: index.php");
-    exit();
-}
-
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
 
@@ -58,17 +52,17 @@ require_once(BASEPATH . "/admin/templates/header.php");
                     <!-- inputan nama supplier -->
                     <div class="input-container">
                         <label for="nama_supplier">Nama Supplier</label>
-                        <input type="text" name="nama_supplier" id="nama_supplier" value="<?php echo $_POST["nama_supplier"] ?? '' ?>">
+                        <input type="text" name="nama_supplier" id="nama_supplier" value="<?php echo htmlspecialchars($_POST["nama_supplier"] ?? '') ?>">
                     </div>
                     <!-- inputan telepon supplier-->
                     <div class="input-container">
                         <label for="tel">Telepon Supplier</label>
-                        <input type="text" name="tel" id="tel" value="<?php echo $_POST["tel"] ?? '' ?>">
+                        <input type="text" name="tel" id="tel" value="<?php echo htmlspecialchars($_POST["tel"] ?? '') ?>">
                     </div>
                     <!-- inputan alamat supplier -->
                     <div class="input-container">
                         <label for="alamat">Alamat Supplier</label>
-                        <input type="text" name="alamat" id="alamat" value="<?php echo $_POST["alamat"] ?? '' ?>">
+                        <input type="text" name="alamat" id="alamat" value="<?php echo htmlspecialchars($_POST["alamat"] ?? '') ?>">
                     </div>
                     <!-- submit -->
                     <button type="submit" name="submit" class="submit">Tambahkan</button>

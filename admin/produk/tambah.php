@@ -1,11 +1,5 @@
 <?php 
 
-// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
-if (!isset($_GET['cek'])) {
-    header("Location: index.php");
-    exit();
-}
-
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
 
@@ -19,7 +13,7 @@ if (isset($_POST['submit'])) {
     validasiTambahProduk($errors, $_POST);
 
     $stat = DB->prepare("SELECT nama_produk FROM produk WHERE nama_produk = :nama_produk");
-    $stat->execute(array(":nama_produk" => $nama_produk));
+    $stat->execute(array(":nama_produk" => htmlspecialchars($_POST['nama_produk'])));
 
     if ($stat->rowCount() > 0) {
         $errors['error'] = "Nama produk sudah ada";
@@ -44,6 +38,7 @@ if (isset($_POST['submit'])) {
                 ":stok_produk" => $_POST['stok'],
                 ":gambar_produk" => $gambar,
                 ":id_kategori" => $_POST['kategori']));
+            move_uploaded_file($_FILES["gambar"]["tmp_name"], BASEPATH . "/assets/img/produk/" . $gambar);
         } catch (PDOException $err) {
             echo $err->getMessage(); 
         }
@@ -78,17 +73,17 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                     <!-- inputan nama produk -->
                     <div class="input-container">
                         <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" id="nama_produk" value="<?php echo $_POST["nama_produk"] ?? '' ?>">
+                        <input type="text" name="nama_produk" id="nama_produk" value="<?php echo htmlspecialchars($_POST["nama_produk"] ?? '') ?>">
                     </div>
                     <!-- inputan harga produk -->
                     <div class="input-container">
                         <label for="harga">Harga Produk</label>
-                        <input type="text" name="harga" id="harga" value="<?php echo $_POST["harga"] ?? '' ?>">
+                        <input type="text" name="harga" id="harga" value="<?php echo htmlspecialchars($_POST["harga"] ?? '') ?>">
                     </div>
                     <!-- inputan stok produk -->
                     <div class="input-container">
                         <label for="stok">Stok Produk</label>
-                        <input type="text" name="stok" id="stok" value="<?php echo $_POST["stok"] ?? '' ?>">
+                        <input type="text" name="stok" id="stok" value="<?php echo htmlspecialchars($_POST["stok"] ?? '') ?>">
                     </div>
                     <!-- inputan kategori -->
                     <div class="input-container">

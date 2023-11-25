@@ -97,17 +97,17 @@ if (isset($_POST['register'])) {
                     <!-- inputan-start -->
                     <div class="input-container">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" value="<?php echo $_POST["username"] ?? '' ?>">
+                        <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($_POST["username"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["username"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" value="<?php echo $_POST["password"] ?? '' ?>">
+                        <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($_POST["password"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["password"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="password2">Konfirmasi Password</label>
-                        <input type="password" id="password2" name="password2" value="<?php echo $_POST["password2"] ?? '' ?>">
+                        <input type="password" id="password2" name="password2" value="<?php echo htmlspecialchars($_POST["password2"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["password2"] ?? '' ?></span>
                     </div>
                     <!-- inputan-end -->
@@ -118,32 +118,32 @@ if (isset($_POST['register'])) {
                     <!-- inputan-start -->
                     <div class="input-container">
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" value="<?php echo $_POST["username"] ?? '' ?>">
+                        <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($_POST["username"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["username"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" value="<?php echo $_POST["password"] ?? '' ?>">
+                        <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($_POST["password"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["password"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="password2">Konfirmasi Password</label>
-                        <input type="password" id="password2" name="password2" value="<?php echo $_POST["password2"] ?? '' ?>">
+                        <input type="password" id="password2" name="password2" value="<?php echo htmlspecialchars($_POST["password2"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["password2"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="nama">Nama</label>
-                        <input type="text" id="nama" name="nama" value="<?php echo $_POST["nama"] ?? '' ?>">
+                        <input type="text" id="nama" name="nama" value="<?php echo htmlspecialchars($_POST["nama"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["nama"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="tel">Nomor Telepon</label>
-                        <input type="text" id="tel" name="tel" value="<?php echo $_POST["tel"] ?? '' ?>">
+                        <input type="text" id="tel" name="tel" value="<?php echo htmlspecialchars($_POST["tel"] ?? '') ?>">
                         <span class="error-msg"><?php echo $errors["tel"] ?? '' ?></span>
                     </div>
                     <div class="input-container">
                         <label for="address">Alamat</label>
-                        <textarea name="address" id="address" rows="1"><?php echo $_POST["address"] ?? '' ?></textarea>
+                        <textarea name="address" id="address" rows="1"><?php echo htmlspecialchars($_POST["address"] ?? '') ?></textarea>
                         <span class="error-msg"><?php echo $errors["address"] ?? '' ?></span>
                     </div>
                     <!-- inputan-end -->
