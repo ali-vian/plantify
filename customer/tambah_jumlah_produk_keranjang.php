@@ -15,14 +15,16 @@ require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.
 $keranjang = getKeranjang($_SESSION['username']);
 $product = getDataProductById($_GET['pro']);
 $cek = false;
-foreach($keranjang as $cart ){
+foreach($keranjang as $cart ){//perulangan untuk mencari produk dan dengan produk yang di keranjang apa ada yang sama
+    //jika ada yang sama dan stok produk apakah lebih kecil dari jumlah produk yang dikeranjang 
     if($_GET['pro'] == $cart['id_produk'] && $product['stok_produk'] > $cart['jml']){
-        $cek = true;
+        $cek = true;    //jika benar maka termasuk melebihi stok
     }
 }
 if($cek){
-// function menambahkan tambah jumlah produk
-increaseProductInCart($_GET['pro'],$_GET['krjng']);
-}else{
-	header("Location: index.php");
+    // function menambahkan tambah jumlah produk
+    increaseProductInCart($_GET['pro'],$_GET['krjng']);
+}else{ 
+    //jika melebihi maka kembalikan
+	header("Location: keranjang.php");
 }

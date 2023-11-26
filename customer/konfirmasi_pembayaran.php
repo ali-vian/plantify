@@ -5,15 +5,14 @@ require_once("../base.php");    // untuk mengunakan variable constant BASEURL/BA
 require_once(BASEPATH."/customer/templates/header.php");     // mengabungkan dengan halaman header
 require_once(BASEPATH.'/validations.php');      //digunakan untuk menggunakan fungsi validasi
 
-$dataKeranjang = getKeranjang($_SESSION['username']);   // mendapatkan semua produk di keranjang customer tersebut
 $dataDiri = getDataDiri($_SESSION['username']);     // mendapatkan data diri customer tersebut
 $bank = getAllBank();       // mendapatkan semua data pada tabel bank
-if(empty($dataKeranjang)){
+if(empty($keranjang)){
     header("Location: keranjang.php"); // jika keranjang kosong maka arahkan ke keranjanng.php
 }
 
-$total = 0;
-foreach ($dataKeranjang as $data) {
+$total = 0; //perulangan untuk mendapatkan total dari keranjang
+foreach ($keranjang as $data) {
     $total += $data["harga_produk"] * $data["jml"];
 }                            
 
@@ -31,9 +30,9 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
     
     if (strlen($cek) == 0) { //jika panjangnya 0 maka lakukan berikut 
 
-        $id_keranjang = $dataKeranjang[0]['id_keranjang'];  //mendapatkan keranjang id
+        $id_keranjang = $keranjang[0]['id_keranjang'];  //mendapatkan keranjang id
         $a = insertOrder($_SESSION['username'],$total,$_POST['no_rekening'],$_POST['bank'],$id_keranjang); //menambahkan dari keranjang ke order serta menghapus keeranjag
-        foreach($dataKeranjang as $data)
+        foreach($keranjang as $data)
         {                     //perulangan untuk menambahkan produk ke order_detail
             insertOrderDetail($a,$data['id_produk'],$data['jml'],$data['jml']*$data['harga_produk']);   
         }
@@ -58,7 +57,7 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
                 <th>Harga</th>
                 <th>Jumlah</th>
             </tr>
-            <?php foreach ($dataKeranjang as $data ):?>
+            <?php foreach ($keranjang as $data ):?>
                 <tr>
                     <td>
                         <div class="produk-keranjang">

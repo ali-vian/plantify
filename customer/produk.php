@@ -5,15 +5,16 @@ require_once('../base.php');    // untuk mengunakan variable constant BASEURL/BA
 require_once(BASEPATH . "/customer/templates/header.php");   // mengabungkan dengan halaman header
 
 
-// mengecek apakah ada get jika tidak menampilkan semua
-if(isset($_GET['cate'])){
+
+if(isset($_GET['cate'])){   //pengecekan apakah ada $_GET['cate'] jika ada maka ambil data sesuai dengan kategori
     $products = getAllDataProductsWithDetailsByCategory($_GET['cate']);
     $judul = 'Kategori : '. $products[0]['nama_kategori'];
     
-}elseif(isset($_GET['keyword'])){
-    $judul = 'Hasil Pencarian dari : ' .$_GET['keyword'];
-    $products = getAllDataProductsBySearch($_GET['keyword']);
-}else{
+}elseif(isset($_GET['keyword'])){   //pengecekan apakah ada $_GET['keyword'] jika ada maka ambil data sesuai dengan keyword
+    $keyword = htmlspecialchars($_GET['keyword']);
+    $judul = 'Hasil Pencarian dari : ' .$keyword;
+    $products = getAllDataProductsBySearch($keyword);
+}else{  //selain itu maka tampilkan semua
     $products = getAllDataProductsWithCategory();
     $judul = 'Semua Produk';
 }
@@ -35,14 +36,16 @@ if(isset($_GET['cate'])){
                 <div class="caption">
                     <h5><?= $product['nama_produk']?></h5>  <!-- menampialkan nama produk dari variable $product -->
                     <h5>Rp. <?= number_format($product["harga_produk"], 0, ',', '.')?>,-</h5>   <!-- menampialkan harga produk dari variable $product -->
-                    <small>Tersedia <?= $product['stok_produk']?>
+                    <small>Tersedia <?= $product['stok_produk']?>   <!-- menampialkan stok produk dari variable $product -->
                         <a class="jumlah-btn" href="<?= BASEURL?>/customer/produk.php?cate=<?= $product['id_kategori']?>"><?= $product['nama_kategori']?></a>
-                    </small>     <!-- menampialkan stok produk dari variable $product -->
+                    </small>     
                     <?php 
+                    // pengecekan agar produk tidak bisa dimasukkan keranjang melebihi stok
                     $cek = false;
-                    foreach($keranjang as $cart ){
+                    foreach($keranjang as $cart ){  //perulangan untuk mencari produk dan dengan produk yang di keranjang apa ada yang sama
+                        //jika ada yang sama dan stok produk apakah lebih kecil dari jumlah produk yang dikeranjang 
                         if($product['id_produk'] == $cart['id_produk'] && $product['stok_produk'] <= $cart['jml']){
-                            $cek = true;
+                            $cek = true;  //jika benar maka termasuk melebihi stok
                         }
                     }
                     ?>
