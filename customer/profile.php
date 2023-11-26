@@ -10,6 +10,7 @@ $customer = getDataDiri($_SESSION['username']);
 <div class="profile">
         <div class="card">
             <div class="caption">
+                <!-- menampilkan data customer -->
                 <img class="img-keranjang" src="<?= BASEURL?>/assets/img/admin-icon.png" alt="">
                 <h2>Nama : <?= $customer['nama']?></h2>
                 <h2>Username : <?= $customer['username']?></h2>

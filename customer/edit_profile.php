@@ -14,7 +14,8 @@ require_once(BASEPATH.'/validations.php');
 // mendapatkan data diri customer
 $customer = getDataDiri($_SESSION['username']);
 
-if (isset($_POST['register'])) {
+//validasi inputan customer
+if (isset($_POST['update_profile'])) {
     $nama = htmlspecialchars($_POST['nama']);
     $tel = htmlspecialchars($_POST['tel']);
     $add = htmlspecialchars($_POST['address']);
@@ -25,7 +26,7 @@ if (isset($_POST['register'])) {
     foreach ($errors as $error) {
         $cek .= $error;
     }
-
+    //jika tidak ada erorr maka update profile
     if (strlen($cek) == 0) {
         try{
 
@@ -51,6 +52,8 @@ if (isset($_POST['register'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="<?= BASEURL ?>/assets/styles/style.css">
+    <link rel="icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>    
     <div class="form-container">
@@ -70,8 +73,8 @@ if (isset($_POST['register'])) {
                 <textarea name="address" id="address" rows="1"><?= htmlspecialchars($_POST["address"] ?? $customer['alamat']) ?></textarea>
                 <span class="error-msg"><?= $errors["address"] ?? '' ?></span>
             </div>
-            <a href="<?= $_SERVER['HTTP_REFERER']; ?>" class="btn">Batal</a>
-            <button type="submit" name="register">Edit</button>    
+            <a href="profile.php" class="btn">Batal</a>
+            <button type="submit" name="update_profile">Edit</button>    
         </form>
     </div>
 </body>

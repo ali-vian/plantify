@@ -11,24 +11,24 @@ require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPA
 require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.php untuk mendapatkan function SQL
 require_once(BASEPATH . "/validations.php");
 
-$order = getOrderbyId($_SESSION['username'],$_GET['id']);
-$banks = getAllBank();
+$order = getOrderbyId($_SESSION['username'],$_GET['id']);   //medapatkan data order dari id 
+$banks = getAllBank();  //mendapatkan data semua bank
 
-if($order['status']){
-    header("Location: daftar_transaksi.php");
+if($order['status']){   //jika status sudah dibayar maka tidak boleh diedit arahkan kembali
+    header("Location: daftar_transaksi.php");   
 }
 
-if(isset($_POST['edit'])){
+if(isset($_POST['edit'])){ //jika customer menekan edit maka melalukan validasi inputan
 
-    $no_rekening = htmlspecialchars($_POST['rek']);
-    validateRekening($errors, $no_rekening);
+    $no_rekening = htmlspecialchars($_POST['rek']); //mengamankan dari script injection
+    validateRekening($errors, $no_rekening); //validasi rekening
     
-    $cek = "";
+    $cek = "";  //pengecekan jika ada error
     foreach ($errors as $error) {
         $cek .= $error;
     }
 
-    if (strlen($cek) == 0) {  
+    if (strlen($cek) == 0) {  //jika tidak ada maka update pembayaran
         updateOrder($_POST['bank'] , $_POST['rek'] ,$_GET['id']);
     }
 }
@@ -42,15 +42,19 @@ if(isset($_POST['edit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Pembayaran</title>
     <link rel="stylesheet" href="<?= BASEURL ?>/assets/styles/style.css">
+    <link rel="icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>    
     <div class="form-container">
+        <!-- form edit pembayaran-->
         <form action="edit_pembayaran.php?id=<?= $_GET['id']?>" method="post">
             <label for="bank">BANK</label>
             <select name="bank" id="bank">
-                <?php foreach($banks as $bank ) : ?>
-                    <option value="<?= $bank['id_bank'] ?>" <?= (isset($_POST['bank']) && $_POST['bank'] == $bank['id_bank']) 
-                    || $order['id_bank'] == $bank['id_bank'] ? 'selected' : ''  ?> ><?= $bank['nama_bank'] ?></option>
+                <?php foreach($banks as $bank ) : ?> <!-- perulangan untuk mendapatkan bank -->
+                    <option value="<?= $bank['id_bank'] ?>" 
+                    <?= (isset($_POST['bank']) && $_POST['bank'] == $bank['id_bank']) || $order['id_bank'] == $bank['id_bank'] ? 'selected' : ''  ?><?= $bank['nama_bank'] ?>
+                    </option> <!-- jika ada post atau order yang sama dengan id bank  maka selected -->
                 <?php endforeach ?>
             </select>
             <div class="input-container">

@@ -15,8 +15,8 @@ $populars = getPopularProducts();
     <div class="main-kiri">
         <h1>Tanamkan Keindahan di Setiap Sudut Rumah Anda!</h1>
         <p>
-          Kecantikan alam, dalam genggaman Anda. Bonsai eksklusif untuk
-          keindahan yang abadi. Temukan keharmonisan alam di sini
+            Kecantikan alam, dalam genggaman Anda. Bonsai eksklusif untuk
+            keindahan yang abadi. Temukan keharmonisan alam di sini
         </p>
         <a href="<?= BASEURL. '/customer/produk.php'?>">  <!-- mengarah ke halaman produk -->
             <div class="btn">Temukan Sekarang</div>
@@ -31,23 +31,21 @@ $populars = getPopularProducts();
             <div>
                 <div class="btn-1">Baru</div>                 <!-- mendapatkan gambar produk terbaru index ke 1 -->
                 <img class="img-popular" src="<?= BASEURL ;?>/assets/img/produk/<?= $news[1]['gambar_produk']?>"
-                    alt="popular"
-                />
+                alt="popular"/>
             </div>
         </div>
         <div>
             <div>
                 <div class="btn-1">unggulan</div>            <!-- mendapatkan gambar produk populer index ke 0 -->
                 <img class="img-unggulan" src="<?= BASEURL ;?>/assets/img/produk/<?= $populars[0]['gambar_produk']?>"
-                    alt="unggulan"
-                />
+                alt="unggulan"/>
             </div>
             <img class="img-abs" src="<?= BASEURL ;?>/assets/img/Vector.png" alt="img-abs" />
         </div>
     </div>
 </main>
-    <!------------------------------------ END MAIN ----------------------------------------------->
-    <!------------------------------------ START PRODUK NEW ------------------------------------------->
+<!------------------------------------ END MAIN ----------------------------------------------->
+<!------------------------------------ START PRODUK NEW ------------------------------------------->
 <div class="produk">
     <div class="judul">
         <h2>Baru</h2>                               <!-- mengarah ke halaman produk -->
@@ -55,28 +53,28 @@ $populars = getPopularProducts();
     </div>
     <div class="container">
     <?php foreach($news as $new):?> <!-- perulangan untuk mengeluarkan nilai $news -->
-       
         <div class="card">              <!-- menampialkan gambar produk dari variable $new -->
             <img src="<?= BASEURL ;?>/assets/img/produk/<?= $new['gambar_produk'] ?>"
-              alt="gambar produk" class="img-produk"
-            />
+            alt="gambar produk" class="img-produk"/>
             <div class="caption">
                 <h5><?= $new['nama_produk']?></h5>  <!-- menampialkan nama produk dari variable $new -->
-                <h5>Rp. <?= number_format($new["harga_produk"], 0, ',', '.')?>,-</h5>   <!-- menampialkan harga produk dari variable $new -->
-                <small>Tersedia <?= $new['stok_produk']?>
+                <h5>Rp. <?= number_format($new["harga_produk"], 0, ',', '.')?>,-</h5>   <!-- menampialkan harga produk dari variable $new dengan format number-->
+                <small>Tersedia <?= $new['stok_produk']?>   <!-- menampialkan stok produk dari variable $new -->
                     <a class="jumlah-btn" href="<?= BASEURL?>/customer/produk.php?cate=<?= $new['id_kategori']?>"><?= $new['nama_kategori']?></a>
-                </small>   <!-- menampialkan stok produk dari variable $new -->
+                </small>   
                 <?php 
+                    // pengecekan agar produk tidak bisa dimasukkan keranjang melebihi stok
                     $cek = false;
-                    foreach($keranjang as $cart ){
+                    foreach($keranjang as $cart ){  //perulangan untuk mencari produk dan dengan produk yang di keranjang apa ada yang sama
+                        //jika ada yang sama dan stok produk apakah lebih kecil dari jumlah produk yang dikeranjang 
                         if($new['id_produk'] == $cart['id_produk'] && $new['stok_produk'] <= $cart['jml']){
-                            $cek = true;
+                            $cek = true;  //jika benar maka termasuk melebihi stok
                         }
                     }
                 ?>
                 <?php if ($new['stok_produk'] <= 0 ):?>
                     <div class="btn-card habis">Stok Habis</div>  <!-- kondisi jika stok produk 0 maka tidak bisa dibeli dan menampilkan stok habis -->
-                <?php elseif($cek): ?>
+                <?php elseif($cek): ?> 
                     <div class="btn-card habis">Stok Tidak Mencukupi</div>  
                 <?php else:?>
                     <a href="tambah_keranjang.php?produk=<?= $new["id_produk"] ?>">
@@ -99,19 +97,20 @@ $populars = getPopularProducts();
     <?php foreach($populars as $popular):?> <!-- perulangan untuk mengeluarkan nilai $populars -->
         <div class="card">        <!-- menampialkan gambar produk dari variable $popular -->
             <img src="<?= BASEURL ;?>/assets/img/produk/<?= $popular['gambar_produk'] ?>" 
-                alt="gambar produk"  class="img-produk" 
-            />
+            alt="gambar produk"  class="img-produk" />
             <div class="caption">
                 <h5><?= $popular['nama_produk']?></h5>  <!-- menampialkan nama produk dari variable $popular -->
                 <h5>Rp. <?= number_format($popular["harga_produk"], 0, ',', '.')?>,-</h5>  <!-- menampialkan harga produk dari variable $popular -->
-                <small>Tersedia <?= $popular['stok_produk']?>
+                <small>Tersedia <?= $popular['stok_produk']?>    <!-- menampialkan stok produk dari variable $popular -->
                     <a class="jumlah-btn" href="<?= BASEURL?>/customer/produk.php?cate=<?= $popular['id_kategori']?>"><?= $popular['nama_kategori']?></a>
-                </small>   <!-- menampialkan stok produk dari variable $popular -->
+                </small>  
                 <?php 
+                    // pengecekan agar produk tidak bisa dimasukkan keranjang melebihi stok
                     $cek = false;
-                    foreach($keranjang as $cart ){
+                    foreach($keranjang as $cart ){  //perulangan untuk mencari produk dan dengan produk yang di keranjang apa ada yang sama
+                        //jika ada yang sama dan stok produk apakah lebih kecil dari jumlah produk yang dikeranjang 
                         if($popular['id_produk'] == $cart['id_produk'] && $popular['stok_produk'] <= $cart['jml']){
-                            $cek = true;
+                            $cek = true;  //jika benar maka termasuk melebihi stok
                         }
                     }
                 ?>
@@ -164,7 +163,7 @@ $populars = getPopularProducts();
         ></iframe>
     </div>
 </div>
-    <!------------------------------------ END LOKASI ----------------------------------------------->
+<!------------------------------------ END LOKASI ----------------------------------------------->
 <?php
 require_once(BASEPATH . "/customer/templates/footer.php"); // mengabungkan dengan halaman footer
 ?>
