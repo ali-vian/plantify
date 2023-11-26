@@ -55,8 +55,8 @@ if(isset($_POST['edit'])){
             </select>
             <div class="input-container">
                 <label for="rek">No Rekening</label>
+                <span class="error" style="color:red;"><?= $errors["rek"] ?? '' ?></span>  
                 <input type="text" id="rek" name="rek" value="<?= htmlspecialchars($_POST['rek'] ?? $order['no_rekening']) ?>">
-                <span class="error"><?= $errors["rek"] ?? '' ?></span>
             </div>
             <a href="daftar_transaksi.php" class="btn">Batal</a>
             <button type="submit" name="edit">Edit</button>

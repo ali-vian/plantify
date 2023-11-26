@@ -1,10 +1,5 @@
 <?php 
 
-// untuk masuk ke halaman ini harus lewat tombol, jika lewat link url maka akan dilempar ke halaman index
-if (!isset($_GET['id'])) {
-    header("Location: index.php");
-    exit();
-}
 
 require_once('../../base.php');     // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH . "/validations.php");    // untuk menggunakan fungsi validasi
@@ -47,6 +42,7 @@ if (isset($_POST['submit'])) {
                 ":stok_produk" => $_POST['stok'],
                 ":gambar_produk" => $gambar,
                 ":id_kategori" => $_POST['kategori']));
+            move_uploaded_file($_FILES["gambar"]["tmp_name"], BASEPATH . "/assets/img/produk/" . $gambar);
         } catch (PDOException $err) {
             echo $err->getMessage();
         }
@@ -83,17 +79,17 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
                     <!-- inputan nama produk -->
                     <div class="input-container">
                         <label for="nama_produk">Nama Produk</label>
-                        <input type="text" name="nama_produk" id="nama_produk" value="<?= $product['nama_produk'] ?>">
+                        <input type="text" name="nama_produk" id="nama_produk" value="<?= htmlspecialchars($_POST['nama_produk'] ?? $product['nama_produk']) ?>">
                     </div>
                     <!-- inputan harga produk -->
                     <div class="input-container">
                         <label for="harga">Harga Produk</label>
-                        <input type="text" name="harga" id="harga" value="<?= $product['harga_produk'] ?>">
+                        <input type="text" name="harga" id="harga" value="<?= htmlspecialchars($_POST['harga'] ?? $product['harga_produk']) ?>">
                     </div>
                     <!-- inputan stok produk -->
                     <div class="input-container">
                         <label for="stok">Stok Produk</label>
-                        <input type="text" name="stok" id="stok" value="<?= $product['stok_produk'] ?>">
+                        <input type="text" name="stok" id="stok" value="<?= htmlspecialchars($_POST['stok'] ?? $product['stok_produk']) ?>">
                     </div>
                     <!-- inputan kategori -->
                     <div class="input-container">
@@ -101,7 +97,7 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
                         <select name="kategori" id="kategori">
                             <?php foreach ($categories as $category): ?>
                                 <option value="<?= $category['id_kategori']; ?>" 
-                                <?= $product['id_kategori'] === $category['id_kategori'] ? 'selected' : '' ?>
+                                <?= isset($_POST['kategori']) && $_POST['kategori'] == $category['id_kategori'] || $product['id_kategori'] === $category['id_kategori'] ? 'selected' : '' ?>
                                 ><?= $category['nama_kategori']; ?></option>
                             <?php endforeach; ?>
                         </select>
@@ -112,7 +108,7 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
                         <select name="supplier" id="supplier">
                             <?php foreach ($supplier as $supp): ?>
                                 <option value="<?= $supp['id_supplier']; ?>"
-                                <?= $product['id_supplier'] === $supp['id_supplier'] ? 'selected' : '' ?>
+                                <?= isset($_POST['supplier']) && $_POST['supplier'] == $supp['id_supplier'] || $product['id_supplier'] === $supp['id_supplier'] ? 'selected' : '' ?>
                                 ><?= $supp['nama_supplier']; ?></option>
                             <?php endforeach; ?>
                         </select>

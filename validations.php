@@ -255,13 +255,22 @@ function uploadGambar(&$errors) {
         return false;
     }
     
-    // generate nama gambar baru
-    $namaFileBaru = uniqid();
-    $namaFileBaru .= '.';
-    $namaFileBaru .= $ekstensiGambar;
-    
-    return $namaFileBaru;
+    return $namaFile;
 
+}
+
+function validateUpload(&$errors) {
+    $gambar = uploadGambar($errors);
+
+    $statement = DB->prepare("SELECT * FROM produk WHERE gambar_produk = :gambar_produk");
+    $statement->execute(array(":gambar_produk" => $gambar));
+
+    if ($statement->rowCount() > 0) {
+        $errors['error'] = "gambar sudah dipakai";
+        return false;
+    }
+
+    return $gambar;
 }
 
 function validateTambahSupplier(&$errors, $inputan) {
