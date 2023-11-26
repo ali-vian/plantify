@@ -155,17 +155,37 @@ function getCartCode($username)
 function insertCart($username, $id_produk)
 {
 	$id_keranjang = getCartCode($username); //funsi untuk mendapatkan id_keranjang
-	try {
-		$statement = DB->prepare("INSERT INTO keranjang_detail(id_keranjang,id_produk) VALUES (:id_keranjang,:id_produk)");
-		$statement->bindValue(':id_keranjang', $id_keranjang['id_keranjang']);
-		$statement->bindValue(':id_produk', $id_produk);
-		$statement->execute();
+	$stok_produk = getProductById($id_produk)['stok_produk'];
+	$keranjang = getKeranjang($username);
+	$cek=false;
+	$temp=0;
+	foreach($keranjang as $krnjg){
+		if($krnjg['id_produk'] == $id_produk ){
+			$temp+=1;
+		}
+		if(($krnjg['id_produk'] == $id_produk && $krnjg['jml'] < $stok_produk)){
+			$cek = true;
+		}
+	}
+	if($cek || ($temp === 0 && $stok_produk>0) ){
 
+		try {
+			$statement = DB->prepare("INSERT INTO keranjang_detail(id_keranjang,id_produk) VALUES (:id_keranjang,:id_produk)");
+			$statement->bindValue(':id_keranjang', $id_keranjang['id_keranjang']);
+			$statement->bindValue(':id_produk', $id_produk);
+			$statement->execute();
+	
+			$previousPage = $_SERVER['HTTP_REFERER'];
+			header("Location: $previousPage");
+		} catch (PDOException $err) {
+			echo $err->getMessage();
+		}
+		
+	}else{
 		$previousPage = $_SERVER['HTTP_REFERER'];
 		header("Location: $previousPage");
-	} catch (PDOException $err) {
-		echo $err->getMessage();
 	}
+
 }
 
 // fungsi query untuk menghapus produk di keranjang

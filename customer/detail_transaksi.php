@@ -1,6 +1,6 @@
 <?php
 
-$title = "Keranjang";
+$title = "Detail Transaksi";
 require_once("../base.php");// untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH."/customer/templates/header.php");
 
@@ -55,3 +55,6 @@ foreach ($detail_order as $data) {
         <a class="kembali back-btn" href="daftar_transaksi.php">Kembali</a>
     </div>
 </div>
+<?php
+require_once('templates/footer.php'); // mengabungkan dengan halaman header
+?>
