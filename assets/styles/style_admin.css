@@ -72,6 +72,10 @@ header {
   border-radius: 10px;
   margin: 10px 15px ;
 }
+.admin {
+  color:green; 
+  font-weight:bold;
+}
 .profil {
   display: flex;
   align-items: center;
@@ -214,6 +218,9 @@ select {
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: #f2f2f2;
+}
+.gambar_produk {
+  width: 200px;
 }
 button[type="submit"] {
   text-align: center;

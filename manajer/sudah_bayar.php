@@ -39,7 +39,7 @@ if(isset($_POST['filter'])){
     <!-- start container-kanan -->
     <div class="container-kanan">        
         <div class="form-container">
-            <p class="error" style="color:red;"><?= $errors['error'] ?? "" ?></p>
+            <p class="error"><?= $errors['error'] ?? "" ?></p>
             <form action="sudah_bayar.php" method="post">
                 <label>Mulai dari : </label>
                 <input type="datetime-local" name="time1" value="<?= isset($_POST['time1']) ? $_POST['time1'] :"" ?>">
@@ -102,21 +102,19 @@ if(isset($_POST['filter'])){
         lable.push("<?= $order['tanggal_order'] ?>");
         datas.push(<?= $order['total_order'] ?>);
     <?php endforeach?>
-    const backgroundColors = Array.from({ length: datas.length }, () => {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    });
     const chart = document.getElementById('myChart');
     const data = {
         labels: lable,
         datasets: [{
             label: 'Sudah Bayar',
             data: datas,
-            backgroundColor: backgroundColors,
+            backgroundColor: [
+            'rgba(0, 79, 68, 0.2)',
+            ],
+            borderColor: [
+            'rgb(0, 79, 68)',
+            ],
+            borderWidth: 1,
             hoverOffset: 4
         }]
     };

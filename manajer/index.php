@@ -15,7 +15,7 @@ $kategoriStok = getAllCategoryStock();
     <!-- start container-kanan -->
     <div class="container-kanan">
         <div class="wadah">
-            <h2>Stok Produk</h2>
+            <h2>Stok Produk per Kategori</h2>
             <div>
                 <canvas id="myChart"></canvas>
             </div>
@@ -32,21 +32,19 @@ $kategoriStok = getAllCategoryStock();
         label.push("<?= $kat['nama_kategori'] ?>");
         datas.push(<?= $kat['stok'] ?>);
     <?php endforeach; ?>
-    const backgroundColors = Array.from({ length: datas.length }, () => {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    });
     const chart = document.getElementById('myChart');
     const data = {
         labels : label,
         datasets: [{
             label: 'Stok Produk',
             data: datas,
-            backgroundColor: backgroundColors,
+            backgroundColor: [
+            'rgba(0, 79, 68, 0.2)',
+            ],
+            borderColor: [
+            'rgb(0, 79, 68)',
+            ],
+            borderWidth: 1,
             hoverOffset: 4
         }]
     };

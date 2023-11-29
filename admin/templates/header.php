@@ -4,7 +4,7 @@
     <!-- Start Header -->
     <header>
         <div class="dashboard">
-            <span style="color:green; font-weight:bold;">Admin</span>
+            <span class="admin">Admin</span>
             <p>Dashboard</p>
         </div>
         <div class="profil">

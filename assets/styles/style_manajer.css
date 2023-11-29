@@ -129,9 +129,9 @@ table {
     border-collapse: collapse;
 }
 table.rekap th, table.jumlah th {
-    background-color: #2ecc71;
+    background-color: var(--hijau);
     padding: 20px;
-    color: black;
+    color: white;
 }
 td {
     text-align: center;
@@ -139,4 +139,8 @@ td {
 }
 table.rekap tr:nth-child(odd) {
     background-color: #ccc;
+}
+
+.error {
+    color: red;
 }

@@ -116,7 +116,7 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
                     <!-- inputan gambar -->
                     <div class="input-container">
                         <label for="gambar">Gambar : </label>
-                        <img src="<?= BASEURL ?>\assets\img\produk\<?= $product['gambar_produk']; ?>" alt="gambar_produk" style="width:200px;">
+                        <img src="<?= BASEURL ?>\assets\img\produk\<?= $product['gambar_produk']; ?>" alt="gambar_produk" class="gambar_produk">
                         <input type="file" name="gambar" id="gambar">
                     </div>
                     <!-- submit -->

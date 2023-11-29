@@ -30,19 +30,19 @@ function checkPassword($field) {
 function validateRef(&$errors, $ref, $role, $kode_ref) {
     if ($role == "admin" || $role == "manajer") {
         if (checkRequired($ref)) {
-            $errors["ref"] = "kode refferal tidak boleh kosong";
+            $errors["ref"] = "kode referral tidak boleh kosong";
         } else {
             if (!checkNumeric($ref)) {
-                $errors["ref"] = "kode refferal harus berupa angka";
+                $errors["ref"] = "kode referral harus berupa angka";
             } else if($ref !== $kode_ref[$role]) {
-                $errors["ref"] = "kode refferal tidak sesuai";
+                $errors["ref"] = "kode referral tidak sesuai";
             } else {
                 $errors["ref"] = "";
             }
         }
     } else {
         if (!empty($ref)) {
-            $errors["ref"] = "customer tidak perlu mengisi kode refferal";
+            $errors["ref"] = "customer tidak perlu mengisi kode referral";
         } else {
             $errors["ref"] = ""; 
         }
