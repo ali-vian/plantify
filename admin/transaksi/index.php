@@ -13,7 +13,7 @@ $pesanan =  getAllOrder();      // mengambil data semua pesanan
         <!-- start konfirmasi -->
         <div class="wadah">
             <div class="judul">
-                <h2>Supplier</h2>
+                <h2>Konfirmasi Pembayaran</h2>
             </div>
             <!-- start table -->
             <table>
