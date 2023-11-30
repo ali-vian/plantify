@@ -466,3 +466,8 @@ input.search:focus {
 iframe {
   border: 0;
 }
+
+main.home {
+  height: 100vh;
+  padding: 30px 128px 100px 128px;
+}

@@ -146,23 +146,7 @@ $populars = getPopularProducts();
     </div>
 </div>
     <!------------------------------------ END KATEGORI ----------------------------------------------->
-    <!------------------------------------ START LOKASI ------------------------------------------->
-<div class="lokasi">
-    <div class="judul">
-        <h2>Lokasi Kami</h2>
-    </div>
-    <div class="container">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.9644736773307!2d112.72410727433831!3d-7.130106192873798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd803dcd1e1bd7f%3A0x5261304f608c91db!2sLey%20Denara!5e0!3m2!1sid!2sid!4v1699597392448!5m2!1sid!2sid"
-            width="1159"
-            height="287"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-    </div>
-</div>
-<!------------------------------------ END LOKASI ----------------------------------------------->
+
 <?php
 require_once(BASEPATH . "/customer/templates/footer.php"); // mengabungkan dengan halaman footer
 ?>

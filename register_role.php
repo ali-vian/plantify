@@ -64,7 +64,7 @@ if (isset($_POST['next'])) {
             <!-- inputan-end -->
 
             <button type="submit" name="next">Selanjutnya</button>
-            <p class="link">sudah punya akun? <a href="index.php">login now</a></p>
+            <p class="link">sudah punya akun? <a href="login.php">login now</a></p>
 
         </form>
     </div>

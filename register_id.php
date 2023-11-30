@@ -82,7 +82,7 @@ if (isset($_POST['register'])) {
 
             <div class="thx">
                 <h2>Registrasi Berhasil!</h2>
-                <a href="index.php" class="btn">Login</a>
+                <a href="login.php" class="btn">Login</a>
             </div>
 
         <!-- jika tidak sukses tetap di bagian registrasi -->
