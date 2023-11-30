@@ -92,7 +92,7 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
                 <?php foreach($bank as $b) :  ?> 
                     <span>
                         <input name="bank" id="<?= $b['id_bank']?>" type="radio" value="<?= $b['id_bank'] ?>" <?= isset($_POST['bank'])&&$_POST["bank"]==$b['id_bank'] ? 'checked' : '' ?> >
-                        <label for="<?= $b['id_bank'] ?>">Bank <?= $b['nama_bank'] ?></lable>
+                        <label for="<?= $b['id_bank'] ?>">Bank <?= $b['nama_bank'] ?></label>
                     </span>
                 <?php endforeach ?>
                 </div>
@@ -101,8 +101,8 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
                 <input type="text" name="no_rekening" value="<?= htmlspecialchars($_POST['no_rekening'] ?? '') ?>">
                 <small class="error"><?= $errors["rek"] ?? '' ?></small>
                 <button class="btn-card" type="submit" name="submit">Pesan</button>
-                <a href="keranjang.php">
-                    <button class="kembali" type="button">Batalkan</button>
+                <a href="keranjang.php" class="kembali" >
+                    Batalkan
                 </a>
             </div>
         </form>

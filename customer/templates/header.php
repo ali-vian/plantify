@@ -30,7 +30,7 @@ foreach($keranjang as $krnjg){
     <link rel="shortcut icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!----------------------------------- START HEADER ------------------------------------>
+    <!--================================= START HEADER =================================-->
     <header>
         <div class="menu">
             <img class="logo" src="<?= BASEURL ;?>/assets/img/logo.png" alt="logo" />
@@ -39,14 +39,14 @@ foreach($keranjang as $krnjg){
             <a class="<?= $title == 'Produk' ? 'active' : '' ?>" href="<?= BASEURL. "/customer/produk.php" ?>">Produk</a>
             <a class="<?= $title == 'Daftar Pesanan' ? 'active' : '' ?>" href="<?= BASEURL. "/customer/daftar_transaksi.php" ?>">Daftar Pesanan</a>
         </div>
-        <!-------------- START SEARCH  ----------------->
+        <!--===================== START SEARCH  ============================-->
         <form action="produk.php" class="search" method="get">
             <input type="text" name="keyword" value="" class="search">
             <button class="btn-search">
                 <img src="<?= BASEURL ;?>/assets/img/icon-search.png" alt="icon" />
             </button>
         </form>
-        <!-------------- END SEARCH  ----------------->
+        <!--====================== END SEARCH ===========================-->
         <div class="icon-menu">
             <a href="<?= BASEURL ;?>/customer/keranjang.php">
                 <?php if($total > 0):?> <!--jika total yang telah dihitung lebih besar dari nol maka tampilkan-->
@@ -60,5 +60,5 @@ foreach($keranjang as $krnjg){
                 <img src="<?= BASEURL ;?>/assets/img/<?= $title == 'Profile' ? 'icon-profile-active.png': 'icon-profile.png'?>" alt="icon" />
             </a>
         </div>
-      </header>
-      <!----------------------------------- END HEADER --------------------------------------------->
+    </header>
+    <!--====================================== END HEADER ============================================-->

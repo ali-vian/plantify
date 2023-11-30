@@ -10,7 +10,7 @@ $news = getNewProducts();
 // mendapatkan nilai 4 produk paling banyak di order  
 $populars = getPopularProducts();
 ?>
-<!------------------------------ START MAIN  --------------------------------->
+<!--=================================== START MAIN =============================================-->
 <main>
     <div class="main-kiri">
         <h1>Tanamkan Keindahan di Setiap Sudut Rumah Anda!</h1>
@@ -44,8 +44,8 @@ $populars = getPopularProducts();
         </div>
     </div>
 </main>
-<!------------------------------------ END MAIN ----------------------------------------------->
-<!------------------------------------ START PRODUK NEW ------------------------------------------->
+<!--=================================== END MAIN =============================================-->
+<!--=================================== START PRODUK NEW =============================================-->
 <div class="produk">
     <div class="judul">
         <h2>Baru</h2>                               <!-- mengarah ke halaman produk -->
@@ -86,8 +86,8 @@ $populars = getPopularProducts();
     <?php endforeach;?>
     </div>
 </div>
-    <!------------------------------------ END PRODUK NEW----------------------------------------------->
-    <!------------------------------------ START PRODUK UNGGULAN------------------------------------------->
+    <!--=================================== END PRODUK NEW =============================================-->
+    <!--=================================== START PRODUK POPULAR =============================================-->
 <div class="produk">
     <div class="judul">
         <h2>Popular</h2>                    <!-- mengarah ke halaman produk -->
@@ -128,8 +128,9 @@ $populars = getPopularProducts();
     <?php endforeach;?>
     </div>
 </div>
-    <!------------------------------------ END PRODUK UNGGULAN ----------------------------------------------->
-    <!------------------------------------ START KATEGORI ------------------------------------------->
+    <!--=================================== END PRODUK POPULAR =============================================-->
+    <!--=================================== START KATEGORI =============================================-->
+
 <div class="kategori">
     <div class="judul">
         <h2>Kategori</h2>
@@ -145,7 +146,7 @@ $populars = getPopularProducts();
         <?php endforeach ;?>
     </div>
 </div>
-    <!------------------------------------ END KATEGORI ----------------------------------------------->
+    <!--=================================== END KATEGORI =============================================-->
 
 <?php
 require_once(BASEPATH . "/customer/templates/footer.php"); // mengabungkan dengan halaman footer

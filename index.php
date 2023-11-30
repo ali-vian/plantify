@@ -20,16 +20,17 @@ $populars = getPopularProducts();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plantify | Home<?= $title ?></title> <!--menampilakan title sesuai dengan halaman -->
+    <title>Plantify | Home </title> <!--menampilakan title sesuai dengan halaman -->
     <link rel="stylesheet" href="<?= BASEURL ;?>/assets/styles/style_customer.css" />
     <link rel="icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-<!------------------------------ START MAIN  --------------------------------->
+<!--======================================== START MAIN  ==================================-->
 <main class="home">
     <div class="main-kiri">
+        <img class="logo" src="<?= BASEURL ;?>/assets/img/logo.png" alt="logo" />
         <h1>Tanamkan Keindahan di Setiap Sudut Rumah Anda!</h1>
         <p>
             Kecantikan alam, dalam genggaman Anda. Bonsai eksklusif untuk
@@ -61,4 +62,4 @@ $populars = getPopularProducts();
         </div>
     </div>
 </main>
-<!------------------------------------ END MAIN ----------------------------------------------->
+<!--=========================================== END MAIN =================================================-->
