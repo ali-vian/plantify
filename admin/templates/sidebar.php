@@ -29,13 +29,13 @@ require_once(BASEPATH . "/database.php"); // menghubungkan dengan file database.
     <div class="sidebar">
         <img class="logo" src="<?= BASEURL ;?>/assets/img/logo.png" alt="logo" />
         <div class="menu-container">
-            <menu>
+            <div class="menu">
                 <a href="<?= BASEURL ?>/admin/" class="<?= $title === 'Dashboard' ? 'active' : '' ?>">Dashboard</a>
                 <a href="<?= BASEURL ?>/admin/produk/" class="<?= $title === 'Produk' ? 'active' : '' ?>">Produk</a>
                 <a href="<?= BASEURL ?>/admin/supplier/" class="<?= $title === 'Supplier' ? 'active' : '' ?>">Supplier</a>
                 <a href="<?= BASEURL ?>/admin/customer/" class="<?= $title === 'Customer' ? 'active' : '' ?>">Customer</a>
                 <a href="<?= BASEURL ?>/admin/transaksi/" class="<?= $title === 'Konfirmasi Bayar' ? 'active' : '' ?>">Konfirmasi Bayar</a>
-            </menu>
+            </div>
             <a href="<?= BASEURL ;?>/logout.php" class="logout"><div>Logout</div></a>
         </div>
     </div>

@@ -36,10 +36,10 @@ $pesanan =  getAllOrder();      // mengambil data semua pesanan
                         <td><?= $order['status']==0 ? "Belum Dibayar" : "Sudah Dibayar"?></td>
                         <td>
                             <?php if(!$order['status']==0) : ?>
-                                <button class="hapus">Telah dikonfirmasi</button>
+                                <a class="hapus">Telah dikonfirmasi</a>
                             <?php else: ?>
-                                <a href="<?= BASEURL ?>/admin/transaksi/ubah_status_bayar.php?id=<?= $order['id_order']; ?>">
-                                    <button class="ubah">Konfirmasi</button>
+                                <a href="<?= BASEURL ?>/admin/transaksi/ubah_status_bayar.php?id=<?= $order['id_order']; ?>" class="ubah">
+                                    Konfirmasi
                                 </a>
                             <?php endif;?>
                         </td>

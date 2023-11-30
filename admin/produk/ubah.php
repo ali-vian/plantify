@@ -62,8 +62,8 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
 
         <!-- start ubah produk -->
         <div class="wadah">
-            <a href="<?= BASEURL ?>/admin/produk/">
-                <button class="kembali">Kembali</button>
+            <a href="<?= BASEURL ?>/admin/produk/" class="kembali">
+                Kembali
             </a>
             <div class="judul">
                 <h2>Ubah Produk</h2>
@@ -116,7 +116,7 @@ $supplier = getAllDataSupplier();       // mengambil semua data supplier
                     <!-- inputan gambar -->
                     <div class="input-container">
                         <label for="gambar">Gambar : </label>
-                        <img src="<?= BASEURL ?>\assets\img\produk\<?= $product['gambar_produk']; ?>" alt="gambar_produk" class="gambar_produk">
+                        <img src="<?= BASEURL ?>/assets/img/produk/<?= $product['gambar_produk']; ?>" alt="gambar_produk" class="gambar_produk">
                         <input type="file" name="gambar" id="gambar">
                     </div>
                     <!-- submit -->

@@ -91,35 +91,36 @@ if(isset($_POST['filter'])){
         </div>
     </div>
     <!-- end container-kanan -->  
+
+    <script src="<?= BASEURL ?>/manajer/node_modules/chart.js/dist/chart.umd.js"></script>        
+    <script>
+        let lable = [];
+        let datas= [];
+        <?php foreach($orders as $order):?>
+            lable.push("<?= $order['tanggal_order'] ?>");
+            datas.push(<?= $order['total_order'] ?>);
+        <?php endforeach?>
+        const chart = document.getElementById('myChart');
+        const data = {
+            labels: lable,
+            datasets: [{
+                label: 'Belum Bayar',
+                data: datas,
+                backgroundColor: [
+                'rgba(0, 79, 68, 0.2)',
+                ],
+                borderColor: [
+                'rgb(0, 79, 68)',
+                ],
+                borderWidth: 1,
+                hoverOffset: 4
+            }]
+        };
+        const config = {
+            type: 'bar',
+            data: data,
+        };
+        new Chart(chart, config);
+    </script>
 </body>
-<script src="<?= BASEURL ?>/manajer/node_modules/chart.js/dist/chart.umd.js"></script>        
-<script>
-    let lable = [];
-    let datas= [];
-    <?php foreach($orders as $order):?>
-        lable.push("<?= $order['tanggal_order'] ?>");
-        datas.push(<?= $order['total_order'] ?>);
-    <?php endforeach?>
-    const chart = document.getElementById('myChart');
-    const data = {
-        labels: lable,
-        datasets: [{
-            label: 'Belum Bayar',
-            data: datas,
-            backgroundColor: [
-            'rgba(0, 79, 68, 0.2)',
-            ],
-            borderColor: [
-            'rgb(0, 79, 68)',
-            ],
-            borderWidth: 1,
-            hoverOffset: 4
-        }]
-    };
-    const config = {
-        type: 'bar',
-        data: data,
-    };
-    new Chart(chart, config);
-</script>
 </html>

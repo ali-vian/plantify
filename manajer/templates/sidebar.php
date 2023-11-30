@@ -23,11 +23,11 @@ require_once(BASEPATH . "/database.php");
             </div>
         </div>
         <div class="menu-container">
-            <menu>
+            <div class="menu"> 
                 <a href="<?= BASEURL ?>/manajer/index.php" class="<?= $title === 'Dashboard' ? 'active' : '' ?>">Dashboard</a>
                 <a href="<?= BASEURL ?>/manajer/belum_bayar.php" class="<?= $title === 'Belum Bayar' ? 'active' : '' ?>">Belum Bayar</a>
                 <a href="<?= BASEURL ?>/manajer/sudah_bayar.php" class="<?= $title === 'Sudah Bayar' ? 'active' : '' ?>">Sudah Bayar</a>
-            </menu>
+            </div> 
         </div>
         <a href="<?= BASEURL ?>/logout.php">Logout</a>
     </div>
