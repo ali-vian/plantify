@@ -44,8 +44,8 @@ $supplier = getSupplierById($id);   // mengambil data supplier berdasarkan id
 
         <!-- start ubah supplier -->
         <div class="wadah">
-            <a href="<?= BASEURL ?>/admin/supplier/">
-                <button class="kembali">Kembali</button>
+            <a href="<?= BASEURL ?>/admin/supplier/" class="kembali">
+                Kembali
             </a>
             <div class="judul">
                 <h2>Ubah Supplier</h2>

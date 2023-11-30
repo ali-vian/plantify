@@ -30,11 +30,11 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                         <td><?= $sup['alamat']; ?></td>
                         <td>
                             <div class="button-container">
-                                <a href="<?= BASEURL ?>/admin/supplier/ubah.php?id=<?= $sup['id_supplier']; ?>">
-                                    <button class="ubah">Ubah</button>
+                                <a href="<?= BASEURL ?>/admin/supplier/ubah.php?id=<?= $sup['id_supplier']; ?>" class="ubah">
+                                    Ubah
                                 </a>
-                                <a href="hapus.php?id=<?= $sup['id_supplier']; ?>">
-                                    <button class="hapus">Hapus</button>
+                                <a href="hapus.php?id=<?= $sup['id_supplier']; ?>" class="hapus">
+                                    Hapus
                                 </a>
                             </div>
                         </td>
@@ -42,8 +42,8 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                 <?php endforeach; ?>
             </table>
             <!-- end table -->
-            <a href="<?= BASEURL ?>/admin/supplier/tambah.php">
-                <button class="tambah">Tambahkan Supplier Baru</button>
+            <a href="<?= BASEURL ?>/admin/supplier/tambah.php" class="tambah">
+                Tambahkan Supplier Baru
             </a>
         </div>
         <!-- end supplier -->

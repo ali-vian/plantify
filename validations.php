@@ -26,6 +26,11 @@ function checkPassword($field) {
     return preg_match($pattern, $field);
 }
 
+function checkSymbol($field) {
+    $pattern = "/[@$!%*?&#<>*=_]+/";
+    return preg_match($pattern, $field);
+}
+
 // validasi inputan kode ref (required, numeric, ref === kode ref)
 function validateRef(&$errors, $ref, $role, $kode_ref) {
     if ($role == "admin" || $role == "manajer") {
@@ -42,7 +47,7 @@ function validateRef(&$errors, $ref, $role, $kode_ref) {
         }
     } else {
         if (!empty($ref)) {
-            $errors["ref"] = "customer tidak perlu mengisi kode referral";
+            $errors["ref"] = "customer tidak perlu isi kode referral";
         } else {
             $errors["ref"] = ""; 
         }
@@ -177,6 +182,8 @@ function validateRekening(&$errors, $rek) {
 function validateAlamat(&$errors, $address) {
     if (checkRequired($address)) {
         $errors["address"] = "alamat tidak boleh kosong";
+    } else if (checkSymbol($address)) {
+        $errors["address"] = "tidak boleh mengandung simbol";
     } else {
         $errors["address"] = "";
     }
@@ -254,23 +261,13 @@ function uploadGambar(&$errors) {
         $errors['error'] = "ekstensi gambar tidak valid";
         return false;
     }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiGambar;
     
-    return $namaFile;
+    return $namaFileBaru;
 
-}
-
-function validateUpload(&$errors) {
-    $gambar = uploadGambar($errors);
-
-    $statement = DB->prepare("SELECT * FROM produk WHERE gambar_produk = :gambar_produk");
-    $statement->execute(array(":gambar_produk" => $gambar));
-
-    if ($statement->rowCount() > 0) {
-        $errors['error'] = "gambar sudah dipakai";
-        return false;
-    }
-
-    return $gambar;
 }
 
 function validateTambahSupplier(&$errors, $inputan) {
@@ -287,6 +284,8 @@ function validateTambahSupplier(&$errors, $inputan) {
             $errors['error'] = "telepon supplier harus berupa numerik";
         } else if (strlen($tel) < 12) {
             $errors['error'] = "telepon tidak boleh  kurang dari 12 digit";
+        } else if (checkSymbol($alamat)) {
+            $errors['error'] = "alamat tidak boleh mengandung simbol";
         } else {
             $errors['error'] = "";
         }

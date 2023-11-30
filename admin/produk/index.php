@@ -33,11 +33,11 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                         <small>Tersedia <?= $product['stok_produk']?></small>
                     </div>
                     <div class="button-container">
-                        <a href="<?= BASEURL ?>/admin/produk/ubah.php?id=<?= $product['id_produk']; ?>">
-                            <button class="ubah">Ubah</button>
+                        <a href="<?= BASEURL ?>/admin/produk/ubah.php?id=<?= $product['id_produk']; ?>" class="ubah">
+                            Ubah
                         </a> 
-                        <a href="hapus.php?id=<?= $product['id_produk']; ?>">
-                            <button class="hapus">Hapus</button>
+                        <a href="hapus.php?id=<?= $product['id_produk']; ?>" class="hapus">
+                            Hapus
                         </a>
                     </div>
                 </div>
@@ -45,8 +45,8 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
                 <?php endforeach;?>
             </div>
             <!-- end container-produk -->
-            <a href="<?= BASEURL ?>/admin/produk/tambah.php">
-                <button class="tambah">Tambahkan Produk Baru</button>
+            <a href="<?= BASEURL ?>/admin/produk/tambah.php" class="tambah">
+                Tambahkan Produk Baru
             </a>
         </div>
         <!-- end produk -->

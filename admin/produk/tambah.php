@@ -9,7 +9,7 @@ $success = false;
 // ketika submit ditekan
 if (isset($_POST['submit'])) {
 
-    $gambar = validateUpload($errors);        // berisi nama gambar jika tidak ada error
+    $gambar = uploadGambar($errors);        // berisi nama gambar jika tidak ada error
     validasiTambahProduk($errors, $_POST);
 
     $stat = DB->prepare("SELECT nama_produk FROM produk WHERE nama_produk = :nama_produk");
@@ -58,8 +58,8 @@ $supplier = getAllDataSupplier();   // mengambil semua data supplier
 
         <!-- start tambah produk -->
         <div class="wadah">
-            <a href="<?= BASEURL ?>/admin/produk/">
-                <button class="kembali">Kembali</button>
+            <a href="<?= BASEURL ?>/admin/produk/" class="kembali">
+                Kembali
             </a>
             <div class="judul">
                 <h2>Tambah Produk</h2>

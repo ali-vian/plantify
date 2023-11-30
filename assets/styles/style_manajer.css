@@ -61,14 +61,14 @@ body {
     height: 90%;
     width: 100%;
 }
-menu {
+.menu {
     display: flex;
     flex-direction: column;
     gap: 25px;
     padding: 40px 5px;
     width: 100%;
 }
-menu a {
+.menu a {
     padding: 15px;
     border-radius: 10px;
 }

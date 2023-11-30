@@ -42,7 +42,7 @@ body {
   justify-content: space-between;
   height: 90%;
 }
-menu {
+.menu {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -100,6 +100,7 @@ header {
   justify-content: space-between;
   align-items: center;
   font-family: var(--monsterrat);
+  margin-top: 20px;
   margin-bottom: 50px;
   color: green;
 }
@@ -147,7 +148,7 @@ small {
   padding: 20px;
   gap: 10px;
 }
-button.ubah {
+a.ubah {
   width: 100%;
   background-color: #007bff; 
   color: #fff; 
@@ -155,11 +156,14 @@ button.ubah {
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-size: medium;
 }
-button.ubah:hover {
+a.ubah:hover {
   background-color: #0056b3; 
 }
-button.hapus {
+a.hapus {
   width: 100%;
   background-color: #dc3545; 
   color: #fff; 
@@ -167,11 +171,15 @@ button.hapus {
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-size: medium;
 }
-button.hapus:hover {
+a.hapus:hover {
   background-color: #a52a2a; 
 }
-button.tambah {
+a.tambah {
+  display: block;
   text-align: center;
   width: 100%;
   font-size: 1.1rem;
@@ -183,19 +191,18 @@ button.tambah {
   border-radius: 5px;
   cursor: pointer;
 }
-button.tambah:hover {
+a.tambah:hover {
   background-color: #218838;
 }
-button.kembali {
+a.kembali {
   background-color: #6c757d; 
   color: #fff; 
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
 }
-button.kembali:hover {
+a.kembali:hover {
   background-color: #5a6268; 
 } 
 p.error {
@@ -257,6 +264,6 @@ tr:nth-child(odd) {
   background-color: #ccc;
 }
 
-.logout:hover , menu a:hover {
+.logout:hover , .menu a:hover {
   color: rgb(217, 255, 0);
 }

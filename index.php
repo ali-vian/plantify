@@ -20,7 +20,7 @@ $populars = getPopularProducts();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plantify | Home<?= $title ?></title> <!--menampilakan title sesuai dengan halaman -->
+    <title>Plantify | Home</title> <!--menampilakan title sesuai dengan halaman -->
     <link rel="stylesheet" href="<?= BASEURL ;?>/assets/styles/style_customer.css" />
     <link rel="icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="<?= BASEURL ;?>/assets/img/favicon.ico" type="image/x-icon">
