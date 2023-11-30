@@ -464,8 +464,8 @@ input.search:focus {
   border: none;
 }
 
-iframe {
-  border: 0;
+.logo {
+  width: 100px;
 }
 
 main.home {
