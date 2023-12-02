@@ -50,6 +50,19 @@ foreach ($detail_order as $data) {
             <h4>Total Pembelian</h4>
             <h4>Rp. <?= number_format($total, 0, ',', '.')?>,-</h4>
         </div>
+        <?php if($_GET['st']==0):?>
+            <div class="back-btn">
+                <h5>Silahkan transfer pada rekening dibawah ini sesuai dengan bank yang anda pilih</h5>
+                <ul class="ul">
+                    <small><li>Bank BCA : 32523332515 a/n Plantify Garden</li></small>
+                    <small><li>Bank BRI : 32626215562326262 a/n PT Plantify Garden</li></small>
+                    <small><li>Bank BNI : 03232325326 a/n PT Plantify Garden</li></small>
+                    <small><li>Bank Mandiri : 00821512215442 a/n Plantify Garden</li></small>
+                    <small><li>Bank Permata : 01332541515 a/n Plantify Garden</li></small>
+                    <small><li>Bank CIMB Niaga : 52323256265 a/n Plantify Garden</li></small>
+                </ul>
+            </div>
+        <?php endif?>
         <a class="kembali back-btn" href="daftar_transaksi.php">Kembali</a>
     </div>
 </div>

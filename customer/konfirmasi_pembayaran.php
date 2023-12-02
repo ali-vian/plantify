@@ -1,11 +1,12 @@
 <?php
 
-$title = "Keranjang";       // memberikan judul pada header
+$title = "Konfirmasi Pembayaran";       // memberikan judul pada header
 require_once("../base.php");    // untuk mengunakan variable constant BASEURL/BASEPATH
 require_once(BASEPATH."/customer/templates/header.php");     // mengabungkan dengan halaman header
 require_once(BASEPATH.'/validations.php');      //digunakan untuk menggunakan fungsi validasi
 
 $dataDiri = getDataDiri($_SESSION['username']);     // mendapatkan data diri customer tersebut
+$products = 
 $bank = getAllBank();       // mendapatkan semua data pada tabel bank
 if(empty($keranjang)){
     header("Location: keranjang.php"); // jika keranjang kosong maka arahkan ke keranjanng.php
@@ -27,13 +28,24 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
     foreach ($errors as $error) {       //masukkan error ke string cek 
         $cek .= $error;
     }
-    
-    if (strlen($cek) == 0) { //jika panjangnya 0 maka lakukan berikut 
+
+    $cek2 = True;
+    foreach($keranjang as $kr){
+        $stm = DB->prepare("SELECT stok_produk FROM produk WHERE id_produk=:id");
+        $stm->execute([":id"=>$kr["id_produk"]]);
+        $stok = $stm->fetch(PDO::FETCH_ASSOC);
+        $jml = $kr['jml'];
+        if($jml > $stok['stok_produk']){
+            $cek2 = False;
+        }
+    }
+    if (strlen($cek) == 0 && $cek2) { //jika panjangnya 0 maka lakukan berikut 
 
         $id_keranjang = $keranjang[0]['id_keranjang'];  //mendapatkan keranjang id
         $a = insertOrder($_SESSION['username'],$total,$_POST['no_rekening'],$_POST['bank'],$id_keranjang); //menambahkan dari keranjang ke order serta menghapus keeranjag
         foreach($keranjang as $data)
         {                     //perulangan untuk menambahkan produk ke order_detail
+            
             insertOrderDetail($a,$data['id_produk'],$data['jml'],$data['jml']*$data['harga_produk']);   
         }
         
@@ -87,7 +99,7 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
         </div>
         <form action="konfirmasi_pembayaran.php" method="post" >
             <div class="form-konfirmasi bayar">
-                <h4>Tipe Pembayaran</h4>
+                <h4>Pilih Bank</h4>
                 <div class="tipe-pembayaran">
                 <?php foreach($bank as $b) :  ?> 
                     <span>
@@ -97,9 +109,18 @@ if(isset($_POST['submit'])){       // cek apakah ada submit
                 <?php endforeach ?>
                 </div>
                 <small class="error"><?= $errors["bank"] ?? '' ?></small>
-                <h4>No Rekening</h4>
+                <h4>No Rekening Anda</h4>
                 <input type="text" name="no_rekening" value="<?= htmlspecialchars($_POST['no_rekening'] ?? '') ?>">
                 <small class="error"><?= $errors["rek"] ?? '' ?></small>
+                <h5>Silahkan transfer pada rekening dibawah ini sesuai dengan bank yang anda pilih</h5>
+                <ul class="ul">
+                    <small><li>Bank BCA : 32523332515 a/n Plantify Garden</li></small>
+                    <small><li>Bank BRI : 32626215562326262 a/n PT Plantify Garden</li></small>
+                    <small><li>Bank BNI : 03232325326 a/n PT Plantify Garden</li></small>
+                    <small><li>Bank Mandiri : 00821512215442 a/n Plantify Garden</li></small>
+                    <small><li>Bank Permata : 01332541515 a/n Plantify Garden</li></small>
+                    <small><li>Bank CIMB Niaga : 52323256265 a/n Plantify Garden</li></small>
+                </ul>
                 <button class="btn-card" type="submit" name="submit">Pesan</button>
                 <a href="keranjang.php" class="kembali" >
                     Batalkan

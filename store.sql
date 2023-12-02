@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Nov 2023 pada 10.45
+-- Waktu pembuatan: 02 Des 2023 pada 08.30
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -88,13 +88,14 @@ INSERT INTO `customer` (`username`, `password`, `nama`, `no_telepon`, `alamat`) 
 ('jony2', 'fe403e47fe351da63e66e142265f3c7898f74bc96a8cb25bfb03f24076abd9db', 'Jane Smith', '765866192119', '456 Oak Ave'),
 ('jony3', 'a580291384145df7176c43e13da43afcefcf856ebb005bb1a2a46f9f6891972e', 'Bob Johnson', '291251871354', '789 Pine St'),
 ('jony4', 'd9e83bd7a318b8b56c96ceba41b8695899e17d98656ea14c0c1ec84ed9b14c82', 'Alice Williams', '858660808073', '101 Elm Rd'),
-('jony4444', 'e3eb1eb3ffc8ed284779baed2ca7b820b8e31164832dafc3b41b1dcd25d5ead3', 'Albert Enstein', '082176764422', 'Timor Leste'),
+('jony4444', 'e3eb1eb3ffc8ed284779baed2ca7b820b8e31164832dafc3b41b1dcd25d5ead3', 'Albert Enstein', '082176764422', 'Amerika Serikat'),
 ('jony5', '8dec442eb6e72878773779a84db884393b6dbf943ce34ebde178c89f55cab896', 'Charlie Brown', '619548453967', '202 Maple Ave'),
 ('jony5555', '4096519cef775688443de922e8131013cfa0d54b9361924a81c48c7053f76bf1', 'Donald Trump', '082177778888', 'Irlandia'),
 ('jony6', 'e220a880c23388245d024d54750d44417c61737c8bcffa26a528d6acfd29868c', 'Eva Davis', '421759873276', '303 Birch St'),
 ('jony7', '03e90b316a82f67b44439c1999308ac6780bb0144dac56bc9ce0e32c1b378a44', 'David Lee', '150154032139', '404 Cedar Rd'),
 ('jony8', '1d247009488744b6c1d9c9371323e52bd5e6ee24c74bf145d18ef8b0b653ac61', 'Fiona Wilson', '285490568527', '505 Pine Ave'),
-('jony9', '5028de0d27d08ea3a91563e016ed411135cf70217f68f9a86e8f0ab87b19ff07', 'George Miller', '876990773879', '606 Oak St');
+('jony9', '5028de0d27d08ea3a91563e016ed411135cf70217f68f9a86e8f0ab87b19ff07', 'George Miller', '876990773879', '606 Oak St'),
+('tes3', 'cdbeadf064ea9d267afc24cc64086fb195deb0df2b42bdd940c666a8e1ec8863', 'Budi Sanjaya', '0187328197234', 'telang indah');
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id_keranjang`, `username`) VALUES
-(45, 'jony4444');
+(50, 'jony4444');
 
 -- --------------------------------------------------------
 
@@ -144,16 +145,17 @@ INSERT INTO `keranjang` (`id_keranjang`, `username`) VALUES
 CREATE TABLE `keranjang_detail` (
   `id_keranjang_detail` int(11) NOT NULL,
   `id_keranjang` int(11) NOT NULL,
-  `id_produk` int(11) NOT NULL,
-  `jumlah` int(11) NOT NULL DEFAULT 1
+  `id_produk` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data untuk tabel `keranjang_detail`
 --
 
-INSERT INTO `keranjang_detail` (`id_keranjang_detail`, `id_keranjang`, `id_produk`, `jumlah`) VALUES
-(132, 45, 21, 1);
+INSERT INTO `keranjang_detail` (`id_keranjang_detail`, `id_keranjang`, `id_produk`) VALUES
+(163, 50, 17),
+(164, 50, 16),
+(165, 50, 11);
 
 -- --------------------------------------------------------
 
@@ -172,15 +174,6 @@ CREATE TABLE `manajer` (
 
 INSERT INTO `manajer` (`username`, `password`) VALUES
 ('jony1234', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony12345', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony123456', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony1234561', '57357c5db8eecc52fb9b60b41b9dd264359a2666de19b1e3390b316822be6509'),
-('jony1234567', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony12345678', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony123456789', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony1234567891', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony12345678910', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
-('jony12345678912', 'cd9984ad7b5a8aff78d7ef83b641efecfccc4a0565ad49dc28d285f7557ed39b'),
 ('jony3333', '0c5ed5d3952a45ee6aea0952a8d5e8df3d575b39e025b55438ea6beddf95ab79');
 
 -- --------------------------------------------------------
@@ -216,9 +209,11 @@ INSERT INTO `order` (`id_order`, `username`, `total_order`, `tanggal_order`, `id
 (67, 'jony7', 1700000, '2023-11-29 05:55:50', 2, '9012345678901234', 1),
 (69, 'jony4444', 310000, '2023-11-21 07:04:29', 3, '432985679239', 1),
 (70, 'jony4444', 480000, '2023-11-22 07:44:29', 1, '0128301381332235', 1),
-(74, 'jony4444', 480000, '2023-11-24 04:15:46', 1, '807309493402', 0),
-(75, 'jony4444', 260000, '2023-11-24 07:29:12', 1, '8192749895834728', 0),
-(76, 'jony4444', 150000, '2023-11-24 08:18:19', 1, '903218481723984', 1);
+(76, 'jony4444', 150000, '2023-11-24 08:18:19', 1, '903218481723984', 1),
+(78, 'jony4444', 900000, '2023-11-25 05:41:55', 1, '0128301381332235', 0),
+(79, 'jony4444', 180000, '2023-11-26 13:53:06', 2, '109833848974', 0),
+(81, 'jony4444', 340000, '2023-11-26 14:03:17', 5, '13807820353272', 0),
+(82, 'tes3', 380000, '2023-11-29 07:50:54', 5, '23942935929943', 0);
 
 -- --------------------------------------------------------
 
@@ -253,12 +248,12 @@ INSERT INTO `order_detail` (`id_order_detail`, `id_order`, `id_produk`, `jumlah_
 (75, 69, 14, 1, 160000),
 (76, 70, 11, 2, 300000),
 (77, 70, 12, 1, 180000),
-(82, 74, 12, 1, 180000),
-(83, 74, 16, 1, 180000),
-(84, 74, 21, 1, 120000),
-(85, 75, 13, 1, 100000),
-(86, 75, 14, 1, 160000),
-(87, 76, 11, 1, 150000);
+(87, 76, 11, 1, 150000),
+(90, 78, 11, 6, 900000),
+(91, 79, 16, 1, 180000),
+(94, 81, 11, 1, 150000),
+(95, 81, 17, 1, 190000),
+(96, 82, 17, 2, 380000);
 
 -- --------------------------------------------------------
 
@@ -288,7 +283,7 @@ INSERT INTO `produk` (`id_produk`, `id_supplier`, `nama_produk`, `harga_produk`,
 (14, 2, 'Bonsai Plum', 160000, 6, '6558642fe0ce4.jpeg', 2, '2023-11-21 07:04:29'),
 (15, 6, 'Bonsai Persik', 200000, 5, '6558647ba7906.jpeg', 2, '2023-11-18 07:15:07'),
 (16, 2, 'Bonsai Delima', 180000, 9, '655864c40dc18.jpeg', 2, '2023-11-18 07:16:20'),
-(17, 5, 'Bonsai Sakura', 190000, 3, '655864fad59be.jpeg', 3, '2023-11-18 07:17:14'),
+(17, 5, 'Bonsai Sakura', 190000, 3, '6568211045bd4.jpeg', 3, '2023-11-30 05:43:44'),
 (18, 4, 'Bonsai Mawar', 80000, 15, '6558652e881e7.jpeg', 3, '2023-11-23 13:57:59'),
 (19, 5, 'Bonsai Azalea', 150000, 10, '65586570403f4.jpeg', 3, '2023-11-18 07:19:12'),
 (20, 6, 'Bonsai Camellia', 170000, 12, '655865979afea.jpeg', 3, '2023-11-18 07:19:51'),
@@ -430,37 +425,37 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `keranjang_detail`
 --
 ALTER TABLE `keranjang_detail`
-  MODIFY `id_keranjang_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id_keranjang_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT untuk tabel `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT untuk tabel `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT untuk tabel `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
