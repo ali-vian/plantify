@@ -1,4 +1,6 @@
 <?php 
+// note 
+// folder plantify ditaruh langsung di direktori htdocs (jika pakai xampp) 
 
 define("BASEURL", "http://localhost/plantify");
 define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/plantify");
