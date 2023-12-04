@@ -54,7 +54,7 @@ $populars = getPopularProducts();
         </div>
         <div>
             <div>
-                <div class="btn-1">unggulan</div>            <!-- mendapatkan gambar produk populer index ke 0 -->
+                <div class="btn-1">Populer</div>            <!-- mendapatkan gambar produk populer index ke 0 -->
                 <img class="img-unggulan" src="<?= BASEURL ;?>/assets/img/produk/<?= $populars[0]['gambar_produk']?>"
                 alt="unggulan"/>
             </div>
