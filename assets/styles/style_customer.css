@@ -470,6 +470,7 @@ input.search:focus {
 
 main.home {
   height: 100vh;
+  min-height: 820px;
   padding: 30px 128px 100px 128px;
 }
 .ul {
